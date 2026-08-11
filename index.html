@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="sr">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MARNIK - arhitektonski projektni biro, Beograd</title>
 <meta name="description" content="Arhitektonski projektni biro MARNIK, Beograd. Projektovanje, tehnička dokumentacija i stručni nadzor od 1992.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./assets/support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<script src="./assets/image-slot.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
 <style>
@@ -85,46 +79,53 @@
     [data-m~="h2nb"] { font-size: 22px !important; letter-spacing: -.03em !important; max-width: none !important; white-space: nowrap !important; }
   }
 </style>
-</helmet>
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 74px; }
+  a:hover { color: #2f6df0; }
+  input:focus, textarea:focus { border-color: #2f6df0; outline: none; }
+  button[type="submit"]:hover { background: #1f57cd; }
+  #mk-burger:hover { border-color: #2f6df0; }
+</style>
+</head>
+<body>
+<div style="--acc: #2f6df0; container-type:inline-size; container-name:pg; min-height:100vh; background:#eef1f5; color:#132438; font-family:'Archivo',sans-serif; -webkit-font-smoothing:antialiased; position:relative;">
 
-<div style="--acc: {{ accent }}; container-type:inline-size; container-name:pg; min-height:100vh; background:#eef1f5; color:#132438; font-family:'Archivo',sans-serif; -webkit-font-smoothing:antialiased; position:relative;">
-
-  <sc-if value="{{ gridOn }}" hint-placeholder-val="{{ true }}">
+  
     <div style="position:absolute; inset:0; pointer-events:none; z-index:0; background-image: linear-gradient(rgba(47,109,240,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(47,109,240,.16) 1px, transparent 1px), linear-gradient(rgba(47,109,240,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(47,109,240,.07) 1px, transparent 1px); background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;"></div>
-  </sc-if>
+  
 
   <!-- NAV -->
   <header style="position:sticky; top:0; z-index:50; background:rgba(238,241,245,.92); backdrop-filter:blur(12px); border-bottom:1px solid #c3ccd8;">
     <div style="max-width:1240px; margin:0 auto; padding:0 40px; height:74px; display:flex; align-items:center; justify-content:space-between; gap:24px;" data-m="hdr">
-      <a onClick="{{ goTop }}" style="cursor:pointer; display:flex; align-items:baseline; gap:12px;">
+      <a href="#" style="cursor:pointer; display:flex; align-items:baseline; gap:12px;">
         <span style="font-weight:800; font-size:22px; letter-spacing:.22em;">MARNIK</span>
         <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#6b7c90; letter-spacing:.15em; text-transform:uppercase;" data-m="hide">est. 1992 · Beograd</span>
       </a>
       <nav style="display:flex; align-items:center; gap:4px;" data-m="hdrnav">
-        <a onClick="{{ goTop }}" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#132438;" style-hover="color:var(--acc,#2f6df0);">Naslovna</a>
-        <a onClick="{{ toAbout }}" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;" style-hover="color:#132438;">O nama</a>
-        <a href="./reference.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;" style-hover="color:#132438;">Reference</a>
-        <a onClick="{{ toTeam }}" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;" style-hover="color:#132438;">Tim</a>
-        <a onClick="{{ toContact }}" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;" style-hover="color:#132438;">Kontakt</a>
+        <a href="#" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#132438;">Naslovna</a>
+        <a href="#sec-about" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;">O nama</a>
+        <a href="reference.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;">Reference</a>
+        <a href="#sec-team" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;">Tim</a>
+        <a href="#sec-contact" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;">Kontakt</a>
       </nav>
-      <button type="button" onClick="{{ toggleMenu }}" aria-label="Meni" data-m="burger" style="display:none; align-items:center; gap:10px; background:transparent; border:1px solid #c3ccd8; padding:10px 14px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#132438; min-height:44px;" style-hover="border-color:var(--acc,#2f6df0);">
+      <button type="button" id="mk-burger" aria-label="Meni" data-m="burger" style="display:none; align-items:center; gap:10px; background:transparent; border:1px solid #c3ccd8; padding:10px 14px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#132438; min-height:44px;">
         <span style="display:flex; flex-direction:column; gap:4px;">
           <span style="display:block; width:18px; height:1.5px; background:#132438;"></span>
           <span style="display:block; width:18px; height:1.5px; background:#132438;"></span>
           <span style="display:block; width:18px; height:1.5px; background:#132438;"></span>
         </span>
-        <span>{{ menuLabel }}</span>
+        <span>Meni</span>
       </button>
     </div>
-    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div id="mk-menu" style="display:none;">
       <nav style="border-top:1px solid #c3ccd8; background:#eef1f5; display:flex; flex-direction:column;">
-        <a onClick="{{ goTopClose }}" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:600; color:#132438; border-bottom:1px solid #dbe2ea;">Naslovna</a>
-        <a onClick="{{ toAboutClose }}" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">O nama</a>
-        <a href="./reference.html" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">Reference</a>
-        <a onClick="{{ toTeamClose }}" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">Tim</a>
-        <a onClick="{{ toContactClose }}" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b;">Kontakt</a>
+        <a href="#" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:600; color:#132438; border-bottom:1px solid #dbe2ea;">Naslovna</a>
+        <a href="#sec-about" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">O nama</a>
+        <a href="reference.html" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">Reference</a>
+        <a href="#sec-team" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">Tim</a>
+        <a href="#sec-contact" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b;">Kontakt</a>
       </nav>
-    </sc-if>
+    </div>
   </header>
 
   <main style="position:relative; z-index:1;">
@@ -134,10 +135,10 @@
         <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.18em; text-transform:uppercase; margin-bottom:26px;">Projektni biro · Beograd</div>
         <h1 data-m="h1" style="font-weight:800; font-size:64px; line-height:1.02; letter-spacing:-.02em; margin:0 0 26px; text-wrap:balance;">Arhitektura koja traje</h1>
         <p style="font-size:18px; line-height:1.6; color:#46586b; max-width:30em; margin:0 0 36px;">Projektni biro iz Beograda osnovan 1992. godine. Stambeni i poslovni objekti, hoteli i sportski sadržaji - od ideje do realizacije.</p>
-        <a href="./reference.html" style="cursor:pointer; display:inline-block; font-size:14px; font-weight:600; letter-spacing:.02em; color:#ffffff; background:var(--acc,#2f6df0); padding:15px 28px; border-radius:2px;" style-hover="background:#1f57cd;">Pogledajte reference →</a>
+        <a href="reference.html" style="cursor:pointer; display:inline-block; font-size:14px; font-weight:600; letter-spacing:.02em; color:#ffffff; background:var(--acc,#2f6df0); padding:15px 28px; border-radius:2px;">Pogledajte reference →</a>
       </div>
       <div style="aspect-ratio:4/5; border:1px solid #c3ccd8;">
-        <image-slot id="mk-hero" shape="rect" placeholder="Hero - reper projekat"></image-slot>
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e3e8ef;border:1px dashed #b7c2d0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8b9aab;text-align:center;padding:8px;">Hero - reper projekat</div>
       </div>
     </section>
 
@@ -171,7 +172,7 @@
           <p style="margin:0;">Od osnivanja, MARNIK pruža klijentima uslugu izrade kompletne tehničke dokumentacije potrebne za dobijanje građevinske dozvole, kao i stručnu podršku u svim fazama projektovanja.</p>
           <p style="margin:0;">Naša primarna delatnost je projektovanje arhitektonskih objekata i izrada tehničke dokumentacije za građevinske i upotrebne dozvole.</p>
         </div>
-        <div style="border:1px solid #c3ccd8;"><div style="aspect-ratio:1/1;"><image-slot id="mk-about" shape="rect" placeholder="Portfolio / studio"></image-slot></div></div>
+        <div style="border:1px solid #c3ccd8;"><div style="aspect-ratio:1/1;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e3e8ef;border:1px dashed #b7c2d0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8b9aab;text-align:center;padding:8px;">Portfolio / studio</div></div></div>
       </div>
       <blockquote data-m="quote" style="margin:64px 0 0; padding:40px 0 0; border-top:1px solid #c3ccd8; font-weight:600; font-size:28px; line-height:1.35; letter-spacing:-.01em; max-width:22em; color:#132438;">
         "Sve prave arhitektonske vrednosti su ljudske vrednosti - u suprotnom nemaju vrednost."
@@ -222,25 +223,25 @@
           <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.16em; text-transform:uppercase; margin-bottom:14px;">Izbor iz opusa</div>
           <h2 data-m="h2" style="font-weight:700; font-size:44px; letter-spacing:-.02em; margin:0;">Reper projekti</h2>
         </div>
-        <a href="./reference.html" style="cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#46586b; letter-spacing:.1em; border-bottom:1px solid #c3ccd8; padding-bottom:4px;" style-hover="color:#132438;">Sve reference →</a>
+        <a href="reference.html" style="cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#46586b; letter-spacing:.1em; border-bottom:1px solid #c3ccd8; padding-bottom:4px;">Sve reference →</a>
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;" data-m="grid2">
         <div style="background:#eef1f5; border:1px solid #c3ccd8;">
-          <div style="aspect-ratio:3/2;"><image-slot id="feat-0" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="aspect-ratio:3/2;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e3e8ef;border:1px dashed #b7c2d0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8b9aab;text-align:center;padding:8px;">Foto objekta</div></div>
           <div style="padding:20px 22px;">
             <div style="font-weight:600; font-size:17px;">FK Beograd - Karaburma</div>
             <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.06em; margin-top:6px;">Stambeno-poslovni kompleks · 16.000 m²</div>
           </div>
         </div>
         <div style="background:#eef1f5; border:1px solid #c3ccd8;">
-          <div style="aspect-ratio:3/2;"><image-slot id="feat-1" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="aspect-ratio:3/2;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e3e8ef;border:1px dashed #b7c2d0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8b9aab;text-align:center;padding:8px;">Foto objekta</div></div>
           <div style="padding:20px 22px;">
             <div style="font-weight:600; font-size:17px;">Vojvode Šupljikca 43</div>
             <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.06em; margin-top:6px;">Stambeno-poslovni objekat</div>
           </div>
         </div>
         <div style="background:#eef1f5; border:1px solid #c3ccd8;">
-          <div style="aspect-ratio:3/2;"><image-slot id="feat-2" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="aspect-ratio:3/2;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e3e8ef;border:1px dashed #b7c2d0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8b9aab;text-align:center;padding:8px;">Foto objekta</div></div>
           <div style="padding:20px 22px;">
             <div style="font-weight:600; font-size:17px;">Vojvode Šupljikca 47</div>
             <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.06em; margin-top:6px;">Stambeno-poslovni objekat</div>
@@ -255,7 +256,7 @@
       <div style="display:flex; flex-direction:column; gap:28px;">
         <div style="background:#e6ebf1; border:1px solid #c3ccd8; display:grid; grid-template-columns:380px 1fr; align-items:stretch;" data-m="bio">
           <div style="display:flex; flex-direction:column; border-right:1px solid #c3ccd8;" data-m="bioimg">
-            <div style="aspect-ratio:1/1;"><image-slot id="mk-director" shape="rect" placeholder="Portret"></image-slot></div>
+            <div style="aspect-ratio:1/1;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e3e8ef;border:1px dashed #b7c2d0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8b9aab;text-align:center;padding:8px;">Portret</div></div>
             <div style="padding:26px 28px;">
               <div style="font-weight:700; font-size:22px;">Nada Naletina, glavni arhitekta</div>
               <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.08em; margin-top:8px;">Direktor i osnivač</div>
@@ -269,7 +270,7 @@
         </div>
         <div style="background:#e6ebf1; border:1px solid #c3ccd8; display:grid; grid-template-columns:380px 1fr; align-items:stretch;" data-m="bio">
           <div style="display:flex; flex-direction:column; border-right:1px solid #c3ccd8;" data-m="bioimg">
-            <div style="aspect-ratio:1/1;"><image-slot id="mk-deputy" shape="rect" placeholder="Portret"></image-slot></div>
+            <div style="aspect-ratio:1/1;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e3e8ef;border:1px dashed #b7c2d0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8b9aab;text-align:center;padding:8px;">Portret</div></div>
             <div style="padding:26px 28px;">
               <div style="font-weight:700; font-size:22px;">Nikola Naletina, arhitekta</div>
               <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.08em; margin-top:8px;">Zamenik direktora</div>
@@ -300,8 +301,8 @@
             </div>
             <div style="margin-bottom:32px;">
               <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6b7c90;">Telefon</div>
-              <div style="margin-top:10px; font-size:19px; font-weight:500;"><a href="tel:+381113226509" style-hover="color:var(--acc,#2f6df0);">+381 11 3226 509</a></div>
-              <div style="margin-top:6px; font-size:19px; font-weight:500;"><a href="tel:+381113249020" style-hover="color:var(--acc,#2f6df0);">+381 11 3249 020</a></div>
+              <div style="margin-top:10px; font-size:19px; font-weight:500;"><a href="tel:+381113226509">+381 11 3226 509</a></div>
+              <div style="margin-top:6px; font-size:19px; font-weight:500;"><a href="tel:+381113249020">+381 11 3249 020</a></div>
             </div>
             <div style="margin-bottom:40px;">
               <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6b7c90;">Email</div>
@@ -316,33 +317,33 @@
             </div>
             <div data-m="stack" style="display:flex; justify-content:space-between; gap:14px; padding:14px 0 14px 32px; border-top:1px solid #c3ccd8; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#6b7c90;">
               <span>Kondina 1a · Stari Grad</span>
-              <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Kondina+1a,+11000+Beograd,+Srbija" target="_blank" rel="noopener noreferrer" style="color:#132438; border-bottom:1px solid var(--acc,#2f6df0);" style-hover="color:var(--acc,#2f6df0);">Kako do nas →</a>
+              <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Kondina+1a,+11000+Beograd,+Srbija" target="_blank" rel="noopener noreferrer" style="color:#132438; border-bottom:1px solid var(--acc,#2f6df0);">Kako do nas →</a>
             </div>
           </div>
         </div>
 
         <div data-m="cform" style="border-top:1px solid #c3ccd8; padding:52px 0;">
           <div data-m="cwrap" style="display:grid; grid-template-columns:minmax(0,680px) minmax(240px,1fr); gap:56px; align-items:start;">
-          <form onSubmit="{{ sendInquiry }}" data-m="csq" style="width:100%; max-width:680px; aspect-ratio:1/1; box-sizing:border-box; background:#d6dfea; border:1px solid #9caec4; padding:44px; display:flex; flex-direction:column;">
+          <form id="mk-form" data-m="csq" style="width:100%; max-width:680px; aspect-ratio:1/1; box-sizing:border-box; background:#d6dfea; border:1px solid #9caec4; padding:44px; display:flex; flex-direction:column;">
             <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#6b7c90; margin-bottom:28px;">Pošaljite upit</div>
             <div style="display:flex; flex-direction:column; gap:18px; margin-bottom:22px;">
               <div>
                 <label for="f-ime" style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6b7c90; margin-bottom:8px;">Ime i prezime</label>
-                <input id="f-ime" name="ime" type="text" required="required" style="width:100%; background:#eef1f5; border:1px solid #c3ccd8; padding:13px 14px; font-family:'Archivo',sans-serif; font-size:15px; color:#132438;" style-focus="border-color:var(--acc,#2f6df0); outline:none;">
+                <input id="f-ime" name="ime" type="text" required="required" style="width:100%; background:#eef1f5; border:1px solid #c3ccd8; padding:13px 14px; font-family:'Archivo',sans-serif; font-size:15px; color:#132438;">
               </div>
               <div>
                 <label for="f-email" style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6b7c90; margin-bottom:8px;">Email</label>
-                <input id="f-email" name="email" type="email" required="required" style="width:100%; background:#eef1f5; border:1px solid #c3ccd8; padding:13px 14px; font-family:'Archivo',sans-serif; font-size:15px; color:#132438;" style-focus="border-color:var(--acc,#2f6df0); outline:none;">
+                <input id="f-email" name="email" type="email" required="required" style="width:100%; background:#eef1f5; border:1px solid #c3ccd8; padding:13px 14px; font-family:'Archivo',sans-serif; font-size:15px; color:#132438;">
               </div>
               <div>
                 <label for="f-tel" style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6b7c90; margin-bottom:8px;">Telefon</label>
-                <input id="f-tel" name="telefon" type="tel" style="width:100%; background:#eef1f5; border:1px solid #c3ccd8; padding:13px 14px; font-family:'Archivo',sans-serif; font-size:15px; color:#132438;" style-focus="border-color:var(--acc,#2f6df0); outline:none;">
+                <input id="f-tel" name="telefon" type="tel" style="width:100%; background:#eef1f5; border:1px solid #c3ccd8; padding:13px 14px; font-family:'Archivo',sans-serif; font-size:15px; color:#132438;">
               </div>
             </div>
             <label for="f-poruka" style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6b7c90; margin-bottom:8px;">Poruka</label>
-            <textarea id="f-poruka" name="poruka" rows="4" required="required" style="width:100%; flex:1; min-height:120px; box-sizing:border-box; background:#eef1f5; border:1px solid #c3ccd8; padding:13px 14px; font-family:'Archivo',sans-serif; font-size:15px; color:#132438; margin-bottom:24px; resize:vertical;" style-focus="border-color:var(--acc,#2f6df0); outline:none;"></textarea>
+            <textarea id="f-poruka" name="poruka" rows="4" required="required" style="width:100%; flex:1; min-height:120px; box-sizing:border-box; background:#eef1f5; border:1px solid #c3ccd8; padding:13px 14px; font-family:'Archivo',sans-serif; font-size:15px; color:#132438; margin-bottom:24px; resize:vertical;"></textarea>
             <div style="display:flex;">
-              <button type="submit" style="background:var(--acc,#2f6df0); color:#ffffff; border:none; padding:16px 48px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer;" style-hover="background:#1f57cd;">Pošaljite upit</button>
+              <button type="submit" style="background:var(--acc,#2f6df0); color:#ffffff; border:none; padding:16px 48px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer;">Pošaljite upit</button>
             </div>
           </form>
           <div style="display:flex; flex-direction:column; gap:22px; padding-top:4px; font-family:'IBM Plex Mono',monospace; font-size:15px; line-height:1.85; letter-spacing:.04em; color:#46586b;">
@@ -361,16 +362,16 @@
   <footer style="position:relative; z-index:1; border-top:1px solid #c3ccd8; background:rgba(214,223,234,.55);">
     <div style="max-width:1240px; margin:0 auto; padding:56px 40px; display:grid; grid-template-columns:2fr 1fr 1fr; gap:40px;" data-m="pad col">
       <div>
-        <a onClick="{{ goTop }}" style="cursor:pointer; display:inline-block; font-weight:800; font-size:20px; letter-spacing:.22em; margin-bottom:14px;" style-hover="color:var(--acc,#2f6df0);">MARNIK</a>
+        <a href="#" style="cursor:pointer; display:inline-block; font-weight:800; font-size:20px; letter-spacing:.22em; margin-bottom:14px;">MARNIK</a>
         <p style="font-size:14px; line-height:1.6; color:#6b7c90; max-width:26em; margin:0;">Arhitektonski projektni biro iz Beograda od 1992. Projektovanje, tehnička dokumentacija i stručni nadzor.</p>
       </div>
       <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#46586b;">
-        <a onClick="{{ goTop }}" style="cursor:pointer;" style-hover="color:#132438;">Naslovna</a>
-        <a onClick="{{ toAbout }}" style="cursor:pointer;" style-hover="color:#132438;">O nama</a>
-        <a href="./reference.html" style="cursor:pointer;" style-hover="color:#132438;">Reference</a>
-        <a onClick="{{ toTeam }}" style="cursor:pointer;" style-hover="color:#132438;">Tim</a>
-        <a onClick="{{ toServices }}" style="cursor:pointer;" style-hover="color:#132438;">Usluge</a>
-        <a onClick="{{ toContact }}" style="cursor:pointer;" style-hover="color:#132438;">Kontakt</a>
+        <a href="#" style="cursor:pointer;">Naslovna</a>
+        <a href="#sec-about" style="cursor:pointer;">O nama</a>
+        <a href="reference.html" style="cursor:pointer;">Reference</a>
+        <a href="#sec-team" style="cursor:pointer;">Tim</a>
+        <a href="#sec-services" style="cursor:pointer;">Usluge</a>
+        <a href="#sec-contact" style="cursor:pointer;">Kontakt</a>
       </div>
       <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#6b7c90; line-height:1.9;">
         Kondina 1a<br>11000 Beograd<br>+381 11 3226 509<br>marnik.biro@gmail.com
@@ -384,99 +385,39 @@
     </div>
   </footer>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2f6df0&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#2f6df0&quot;,&quot;#0d7a6f&quot;,&quot;#1f4e8c&quot;,&quot;#3d5a75&quot;]},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
-class Component extends DCLogic {
-  state = { menuOpen: false };
-
-  closeMenu() { if (this.state.menuOpen) this.setState({ menuOpen: false }); }
-
-  scrollToClose(id) {
-    const go = this.scrollTo(id);
-    return () => { this.closeMenu(); setTimeout(go, 20); };
+<script>
+(function () {
+  var b = document.getElementById('mk-burger'), m = document.getElementById('mk-menu');
+  if (b && m) {
+    b.addEventListener('click', function () {
+      var open = m.style.display !== 'none';
+      m.style.display = open ? 'none' : 'flex';
+      b.lastElementChild.textContent = open ? 'Meni' : 'Zatvori';
+    });
+    m.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { m.style.display = 'none'; b.lastElementChild.textContent = 'Meni'; }
+    });
   }
-
-  scrollTo(id) {
-    return () => {
-      if (!id) { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
-      const el = document.getElementById("sec-" + id);
-      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 74, behavior: "smooth" });
-    };
-  }
-
-  jumpToHash = () => {
-    const id = (window.location.hash || "").replace("#", "");
-    if (!id) return;
-    const el = document.getElementById(id);
+  var f = document.getElementById('mk-form');
+  if (f) f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var el = f.elements;
+    var body = el.poruka.value + '\n\n- ' + el.ime.value + '\n' + el.email.value + (el.telefon.value ? '\n' + el.telefon.value : '');
+    window.location.href = 'mailto:marnik.biro@gmail.com?subject=' + encodeURIComponent('Upit sa sajta - ' + el.ime.value) + '&body=' + encodeURIComponent(body);
+  });
+  function initMap() {
+    var el = document.getElementById('mk-map');
     if (!el) return;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 74, behavior: "smooth" });
-  };
-
-  componentDidMount() {
-    this.syncMap();
-    // sadržaj se dolivа nakon učitavanja, pa se na #hash skače kada sekcija postoji
-    [60, 260, 700].forEach(t => setTimeout(this.jumpToHash, t));
-    window.addEventListener("hashchange", this.jumpToHash);
+    if (!window.L) { setTimeout(initMap, 200); return; }
+    var HQ = [44.813856, 20.4648149];
+    var map = window.L.map(el, { center: HQ, zoom: 16, scrollWheelZoom: false });
+    window.L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 20, attribution: '© OpenStreetMap contributors © CARTO' }).addTo(map);
+    window.L.marker(HQ, { icon: window.L.divIcon({ className: '', html: '<div class="mk-pin"></div>', iconSize: [16, 16], iconAnchor: [8, 8] }) }).addTo(map);
+    window.L.marker(HQ, { icon: window.L.divIcon({ className: '', html: '<div class="mk-label"><b>Marnik</b>Kondina 1a, Stari Grad</div>', iconSize: [0, 0], iconAnchor: [-14, 26] }) }).addTo(map);
+    setTimeout(function () { map.invalidateSize(); }, 60);
   }
-  componentDidUpdate() { this.syncMap(); }
-  componentWillUnmount() {
-    window.removeEventListener("hashchange", this.jumpToHash);
-    if (this._map) { this._map.remove(); this._map = null; }
-  }
-
-  syncMap() {
-    const acc = this.props.accent || "#2f6df0";
-    const el = document.getElementById("mk-map");
-    if (!el) { if (this._map) { this._map.remove(); this._map = null; } return; }
-    if (!window.L) { clearTimeout(this._mapT); this._mapT = setTimeout(() => this.syncMap(), 200); return; }
-    if (this._map && this._map._container !== el) { this._map.remove(); this._map = null; }
-    if (!this._map) {
-      const HQ = [44.813856, 20.4648149];
-      const map = window.L.map(el, { center: HQ, zoom: 16, scrollWheelZoom: false });
-      window.L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        subdomains: "abcd", maxZoom: 20, attribution: "© OpenStreetMap contributors © CARTO"
-      }).addTo(map);
-      window.L.marker(HQ, { icon: window.L.divIcon({ className: "", html: '<div class="mk-pin"></div>', iconSize: [16, 16], iconAnchor: [8, 8] }) }).addTo(map);
-      window.L.marker(HQ, { icon: window.L.divIcon({
-        className: "",
-        html: '<div class="mk-label"><b>Marnik</b>Kondina 1a, Stari Grad</div>',
-        iconSize: [0, 0], iconAnchor: [-14, 26]
-      }) }).addTo(map);
-      this._map = map;
-      setTimeout(() => map.invalidateSize(), 60);
-    }
-    const pin = el.querySelector(".mk-pin");
-    if (pin) pin.style.background = acc;
-    const lbl = el.querySelector(".mk-label b");
-    if (lbl) lbl.style.color = acc;
-  }
-
-  renderVals() {
-    return {
-      accent: this.props.accent || "#2f6df0",
-      gridOn: this.props.showGrid !== false,
-      goTop: this.scrollTo(null),
-      toAbout: this.scrollTo("about"),
-      toServices: this.scrollTo("services"),
-      toTeam: this.scrollTo("team"),
-      toContact: this.scrollTo("contact"),
-      menuOpen: this.state.menuOpen,
-      menuLabel: this.state.menuOpen ? "Zatvori" : "Meni",
-      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
-      goTopClose: this.scrollToClose(null),
-      toAboutClose: this.scrollToClose("about"),
-      toTeamClose: this.scrollToClose("team"),
-      toContactClose: this.scrollToClose("contact"),
-      sendInquiry: (e) => {
-        e.preventDefault();
-        const f = e.target.elements;
-        const body = f.poruka.value + "\n\n- " + f.ime.value + "\n" + f.email.value + (f.telefon.value ? "\n" + f.telefon.value : "");
-        window.location.href = "mailto:marnik.biro@gmail.com?subject=" +
-          encodeURIComponent("Upit sa sajta - " + f.ime.value) + "&body=" + encodeURIComponent(body);
-      }
-    };
-  }
-}
+  initMap();
+})();
 </script>
 </body>
 </html>
