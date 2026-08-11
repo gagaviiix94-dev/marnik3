@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Reference - MARNIK arhitektonski projektni biro</title>
+<meta name="description" content="Reper projekti arhitektonskog biroa MARNIK - stambeni i poslovni objekti, hoteli, sportski sadržaji.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./assets/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./assets/image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: #2f6df0; color: #fff; }
+  image-slot { display:block; width:100%; height:100%; }
+  @media (max-width: 760px) {
+    [data-m~="pad"] { padding: 56px 20px !important; }
+    [data-m~="padx"] { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    [data-m~="grid2"] { grid-template-columns: 1fr !important; }
+    [data-m~="h2"] { font-size: 28px !important; margin-bottom: 32px !important; }
+    [data-m~="hdr"] { height: auto !important; padding: 12px 20px !important; flex-wrap: wrap !important; gap: 10px !important; }
+    [data-m~="hdrnav"] { order: 3; width: 100%; overflow-x: auto; gap: 0 !important; }
+    [data-m~="hide"] { display: none !important; }
+  }
+  @container pg (max-width: 760px) {
+    [data-m~="pad"] { padding: 56px 20px !important; }
+    [data-m~="padx"] { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    [data-m~="grid2"] { grid-template-columns: 1fr !important; }
+    [data-m~="h2"] { font-size: 28px !important; margin-bottom: 32px !important; }
+    [data-m~="hdr"] { height: auto !important; padding: 12px 20px !important; flex-wrap: wrap !important; gap: 10px !important; }
+    [data-m~="hdrnav"] { order: 3; width: 100%; overflow-x: auto; gap: 0 !important; }
+    [data-m~="hide"] { display: none !important; }
+  }
+</style>
+</helmet>
+
+<div style="--acc: {{ accent }}; container-type:inline-size; container-name:pg; min-height:100vh; background:#eef1f5; color:#132438; font-family:'Archivo',sans-serif; -webkit-font-smoothing:antialiased; position:relative;">
+
+  <sc-if value="{{ gridOn }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute; inset:0; pointer-events:none; z-index:0; background-image: linear-gradient(#13243809 1px, transparent 1px), linear-gradient(90deg, #13243809 1px, transparent 1px); background-size: 40px 40px;"></div>
+  </sc-if>
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(238,241,245,.92); backdrop-filter:blur(12px); border-bottom:1px solid #c3ccd8;">
+    <div style="max-width:1240px; margin:0 auto; padding:0 40px; height:74px; display:flex; align-items:center; justify-content:space-between; gap:24px;" data-m="hdr">
+      <a href="./index.html" style="cursor:pointer; display:flex; align-items:baseline; gap:12px;">
+        <span style="font-weight:800; font-size:22px; letter-spacing:.22em;">MARNIK</span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#6b7c90; letter-spacing:.15em; text-transform:uppercase;" data-m="hide">est. 1992 · Beograd</span>
+      </a>
+      <nav style="display:flex; align-items:center; gap:4px;" data-m="hdrnav">
+        <a href="./index.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;" style-hover="color:#132438;">Naslovna</a>
+        <a href="./index.html#sec-about" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;" style-hover="color:#132438;">O nama</a>
+        <a href="./reference.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#132438;" style-hover="color:var(--acc,#2f6df0);">Reference</a>
+        <a href="./index.html#sec-team" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;" style-hover="color:#132438;">Tim</a>
+        <a href="./index.html#sec-contact" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;" style-hover="color:#132438;">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="position:relative; z-index:1;">
+    <section id="sec-references" data-m="pad" style="max-width:1240px; margin:0 auto; padding:96px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.16em; text-transform:uppercase; margin-bottom:14px;">Reference</div>
+      <h2 data-m="h2" style="font-weight:800; font-size:44px; letter-spacing:-.02em; margin:0 0 56px;">Realizovani projekti</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;" data-m="grid2">
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-0" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">FK Beograd - Karaburma</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni kompleks · 16.000 m²</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-13" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Ustanička 84b</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat · 2.413 m²</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-14" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Kneza Danila 55</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-1" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 43</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-2" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 47</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-3" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 51</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-4" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 29</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-5" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 53-55</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-6" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Dobrnjca 15</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-7" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Dimitrija Tucovića 146</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-8" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Dimitrija Tucovića 148-150</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-9" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Sredačka 3</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-10" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Svetozara Markovića 48</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-11" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Đevđelijska 7</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div style="background:#eef1f5; border:1px solid #c3ccd8;">
+          <div style="aspect-ratio:3/2;"><image-slot id="proj-12" shape="rect" placeholder="Foto objekta"></image-slot></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Đuke Dinića 17</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.05em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="position:relative; z-index:1; border-top:1px solid #c3ccd8; background:#e6ebf1; margin-top:40px;">
+    <div style="max-width:1240px; margin:0 auto; padding:56px 40px; display:grid; grid-template-columns:2fr 1fr 1fr; gap:40px;" data-m="pad col">
+      <div>
+        <a href="./index.html" style="cursor:pointer; display:inline-block; font-weight:800; font-size:20px; letter-spacing:.22em; margin-bottom:14px;" style-hover="color:var(--acc,#2f6df0);">MARNIK</a>
+        <p style="font-size:14px; line-height:1.6; color:#6b7c90; max-width:26em; margin:0;">Arhitektonski projektni biro iz Beograda od 1992. Projektovanje, tehnička dokumentacija i stručni nadzor.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#46586b;">
+        <a href="./index.html" style="cursor:pointer;" style-hover="color:#132438;">Naslovna</a>
+        <a href="./index.html#sec-about" style="cursor:pointer;" style-hover="color:#132438;">O nama</a>
+        <a href="./reference.html" style="cursor:pointer;" style-hover="color:#132438;">Reference</a>
+        <a href="./index.html#sec-team" style="cursor:pointer;" style-hover="color:#132438;">Tim</a>
+        <a href="./index.html#sec-services" style="cursor:pointer;" style-hover="color:#132438;">Usluge</a>
+        <a href="./index.html#sec-contact" style="cursor:pointer;" style-hover="color:#132438;">Kontakt</a>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#6b7c90; line-height:1.9;">
+        Kondina 1a<br>11000 Beograd<br>+381 11 3226 509<br>marnik.biro@gmail.com
+      </div>
+    </div>
+    <div style="border-top:1px solid #dbe2ea;">
+      <div style="max-width:1240px; margin:0 auto; padding:20px 40px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#7f93a8; letter-spacing:.06em; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;" data-m="padx">
+        <span>© 2026 MARNIK d.o.o. Beograd</span>
+        <span>PIB 100120368 · MB 07812868</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2f6df0&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#2f6df0&quot;,&quot;#0d7a6f&quot;,&quot;#1f4e8c&quot;,&quot;#3d5a75&quot;]},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent || "#2f6df0",
+      gridOn: this.props.showGrid !== false
+    };
+  }
+}
+</script>
+</body>
+</html>
