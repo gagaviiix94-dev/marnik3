@@ -87,13 +87,13 @@
   input:focus, textarea:focus { border-color: #2f6df0; outline: none; }
   button[type="submit"]:hover { background: #1f57cd; }
   #mk-burger:hover { border-color: #2f6df0; }
-  @media (max-width: 940px) {
-    [data-m~="hdrnav"] { display: none !important; }
-    [data-m~="burger"] { display: flex !important; }
+  @media (max-width: 1080px) and (min-width: 761px) {
+    [data-m~="hdr"] { height: auto !important; padding: 12px 24px !important; }
+    [data-m~="hdrnav"] { flex-wrap: wrap; justify-content: flex-end; row-gap: 6px; }
   }
-  @container pg (max-width: 940px) {
-    [data-m~="hdrnav"] { display: none !important; }
-    [data-m~="burger"] { display: flex !important; }
+  @container pg (max-width: 1080px) {
+    [data-m~="hdr"] { height: auto !important; padding: 12px 24px !important; }
+    [data-m~="hdrnav"] { flex-wrap: wrap; justify-content: flex-end; row-gap: 6px; }
   }
 
 </style>
