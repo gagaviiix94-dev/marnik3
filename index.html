@@ -60,6 +60,7 @@
     [data-m~="stack"] { flex-direction: column !important; align-items: flex-start !important; }
     [data-m~="cinfo"] { padding: 36px 0 !important; border-right: none !important; border-bottom: 1px solid #c3ccd8 !important; }
     [data-m~="cform"] { padding: 36px 0 !important; }
+    [data-m~="herosec"] { min-height: 520px !important; }
     [data-m~="cwrap"] { grid-template-columns: 1fr !important; gap: 28px !important; }
     [data-m~="csq"] { max-width: none !important; aspect-ratio: auto !important; padding: 28px 22px !important; }
     [data-m~="h2nb"] { font-size: 22px !important; letter-spacing: -.03em !important; max-width: none !important; white-space: nowrap !important; }
@@ -86,6 +87,7 @@
     [data-m~="stack"] { flex-direction: column !important; align-items: flex-start !important; }
     [data-m~="cinfo"] { padding: 36px 0 !important; border-right: none !important; border-bottom: 1px solid #c3ccd8 !important; }
     [data-m~="cform"] { padding: 36px 0 !important; }
+    [data-m~="herosec"] { min-height: 520px !important; }
     [data-m~="cwrap"] { grid-template-columns: 1fr !important; gap: 28px !important; }
     [data-m~="csq"] { max-width: none !important; aspect-ratio: auto !important; padding: 28px 22px !important; }
     [data-m~="h2nb"] { font-size: 22px !important; letter-spacing: -.03em !important; max-width: none !important; white-space: nowrap !important; }
@@ -131,7 +133,7 @@
         <a href="#sec-contact" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;">Kontakt</a>
         <a href="pregled.html" data-m="prevlink" style="cursor:pointer; white-space:nowrap; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; padding:8px 12px; margin-left:6px; color:#2f6df0; border:1px solid #2f6df0;">Pregled sa fotografijama</a>
       </nav>
-      <button type="button" id="mk-burger" aria-label="Meni" data-m="burger" style="display:none; align-items:center; gap:10px; background:transparent; border:1px solid #c3ccd8; padding:10px 14px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#132438; min-height:44px;">
+      <button type="button" id="mk-burger" aria-label="Meni" data-m="burger" data-open="false" style="display:none; align-items:center; gap:10px; background:transparent; border:1px solid #c3ccd8; padding:10px 14px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#132438; min-height:44px;">
         <span style="display:flex; flex-direction:column; gap:4px;">
           <span data-l="1" style="display:block; width:18px; height:1.5px; background:#132438;"></span>
           <span data-l="2" style="display:block; width:18px; height:1.5px; background:#132438;"></span>
@@ -154,19 +156,20 @@
 
   <main style="position:relative; z-index:1;">
 
-    <section style="max-width:1240px; margin:0 auto; padding:96px 40px 72px; display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;" data-m="pad col">
-      <div>
-        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.18em; text-transform:uppercase; margin-bottom:26px; animation:mkUp .6s ease-out .1s both;">Projektni biro · Beograd</div>
+    <section data-m="herosec" style="position:relative; min-height:660px; display:flex; align-items:center; overflow:hidden; border-bottom:1px solid #c3ccd8;">
+      <div style="position:absolute; inset:0; z-index:0;"><div style="width:100%;height:100%;background:#e3e8ef;display:flex;align-items:flex-end;justify-content:flex-end;padding:22px 26px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#aab6c4;">Hero - reper projekat</div></div>
+      <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(100deg, rgba(238,241,245,.97) 0%, rgba(238,241,245,.92) 34%, rgba(238,241,245,.45) 66%, rgba(238,241,245,.12) 100%);"></div>
+      <div data-m="pad" style="position:relative; z-index:2; pointer-events:none; width:100%; max-width:1240px; margin:0 auto; padding:120px 40px;">
+        <div style="max-width:34em; pointer-events:auto;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.18em; text-transform:uppercase; margin-bottom:26px; animation:mkUp .6s ease-out .1s both;">Projektni biro · Beograd</div>
         <h1 data-m="h1" style="animation:mkUp .6s ease-out .25s both; font-weight:800; font-size:64px; line-height:1.02; letter-spacing:-.02em; margin:0 0 26px; text-wrap:balance;">Arhitektura koja traje</h1>
         <p style="font-size:18px; line-height:1.6; color:#46586b; max-width:30em; margin:0 0 36px; animation:mkUp .6s ease-out .4s both;">Projektni biro iz Beograda osnovan 1992. godine. Stambeni i poslovni objekti, hoteli i sportski sadržaji - od ideje do realizacije.</p>
         <a href="reference.html" style="cursor:pointer; display:inline-block; font-size:14px; font-weight:600; letter-spacing:.02em; color:#ffffff; background:var(--acc,#2f6df0); padding:15px 28px; border-radius:2px; animation:mkUp .6s ease-out .55s both;">Pogledajte reference →</a>
-      </div>
-      <div style="aspect-ratio:4/5; border:1px solid #c3ccd8; animation:mkUp .7s ease-out .35s both;">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e3e8ef;border:1px dashed #b7c2d0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8b9aab;text-align:center;padding:8px;">Hero - reper projekat</div>
+        </div>
       </div>
     </section>
 
-    <section style="border-top:1px solid #c3ccd8; border-bottom:1px solid #c3ccd8; background:rgba(214,223,234,.55);">
+    <section style="margin-top:clamp(44px,6vw,88px); border-top:1px solid #c3ccd8; border-bottom:1px solid #c3ccd8; background:rgba(214,223,234,.55);">
       <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr);" data-m="padx grid4">
         <div style="padding:40px 24px; text-align:center; border-right:1px solid #dbe2ea;" data-m="stat">
           <div style="font-weight:800; font-size:38px; letter-spacing:-.02em;">34</div>
@@ -237,7 +240,7 @@
       </div>
     </section>
 
-    <section data-m="pad" style="max-width:1240px; margin:0 auto; padding:96px 40px;">
+    <section data-m="pad" style="max-width:1240px; margin:0 auto; padding:96px 40px 56px;">
       <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; gap:24px;" data-m="stack">
         <div>
           <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.16em; text-transform:uppercase; margin-bottom:14px;">Izbor iz opusa</div>
@@ -270,7 +273,7 @@
       </div>
     </section>
 
-    <section id="sec-team" data-m="pad" style="max-width:1240px; margin:0 auto; padding:96px 40px; border-top:1px solid #dbe2ea;">
+    <section id="sec-team" data-m="pad" style="max-width:1240px; margin:0 auto; padding:56px 40px 96px; border-top:1px solid #dbe2ea;">
       <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.16em; text-transform:uppercase; margin-bottom:14px;">Tim</div>
       <h2 data-m="h2" style="font-weight:800; font-size:44px; letter-spacing:-.02em; margin:0 0 48px;">Ljudi iza projekata</h2>
       <div style="display:flex; flex-direction:column; gap:28px;">
@@ -443,12 +446,44 @@
 
   (function () {
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var pending = [];
 
     function container(sec) {
       var c = sec, i = 0;
       while (i < 2 && c.children.length === 1 && c.firstElementChild.tagName === 'DIV') { c = c.firstElementChild; i++; }
       return c;
     }
+    function visible(el) {
+      var r = el.getBoundingClientRect();
+      var h = window.innerHeight || document.documentElement.clientHeight;
+      return r.top < h * 0.92 && r.bottom > 0;
+    }
+    function fire(group) {
+      group.done = true;
+      group.run();
+    }
+    function tick() {
+      var live = false;
+      for (var i = 0; i < pending.length; i++) {
+        var g = pending[i];
+        if (g.done) continue;
+        if (visible(g.el)) fire(g); else live = true;
+      }
+      return live;
+    }
+    function watch() {
+      var t0 = Date.now();
+      var iv = setInterval(function () {
+        if (!tick() || Date.now() - t0 > 30000) {
+          clearInterval(iv);
+          pending.forEach(function (g) { if (!g.done) fire(g); });
+        }
+      }, 150);
+      document.addEventListener('scroll', tick, true);
+      window.addEventListener('resize', tick);
+      tick();
+    }
+
     function reveal() {
       var secs = [];
       ['#sec-about', '#sec-services', '#sec-team', '#sec-contact'].forEach(function (sel) {
@@ -465,20 +500,15 @@
           k.style.transform = 'translateY(28px)';
           k.style.transition = 'opacity .75s cubic-bezier(.22,.61,.36,1), transform .75s cubic-bezier(.22,.61,.36,1)';
         });
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (!e.isIntersecting) return;
-            io.unobserve(e.target);
-            kids.forEach(function (k, i) {
-              setTimeout(function () {
-                k.style.opacity = '1';
-                k.style.transform = 'translateY(0)';
-                setTimeout(function () { k.style.transform = 'none'; k.style.transition = ''; }, 850);
-              }, i * 170);
-            });
+        pending.push({ el: sec, done: false, run: function () {
+          kids.forEach(function (k, i) {
+            setTimeout(function () {
+              k.style.opacity = '1';
+              k.style.transform = 'translateY(0)';
+              setTimeout(function () { k.style.transform = 'none'; k.style.transition = ''; }, 850);
+            }, i * 170);
           });
-        }, { threshold: 0.05, rootMargin: '0px 0px -14% 0px' });
-        io.observe(sec);
+        } });
       });
     }
 
@@ -486,44 +516,34 @@
     function counters() {
       var wrap = document.querySelector('[data-m~="grid4"]');
       if (!wrap) return;
-      var cells = wrap.querySelectorAll('[data-m~="stat"]');
       var items = [];
-      Array.prototype.forEach.call(cells, function (cell) {
+      Array.prototype.forEach.call(wrap.querySelectorAll('[data-m~="stat"]'), function (cell) {
         var el = cell.firstElementChild;
         if (!el) return;
         var txt = el.textContent;
         var digits = txt.replace(/[^0-9]/g, '');
         if (!digits) return;
-        var target = parseInt(digits, 10);
-        var suffix = txt.slice(txt.search(/[0-9]/)).replace(/[0-9.]/g, '');
-        items.push({ el: el, target: target, suffix: suffix, done: txt });
-        el.textContent = '0' + suffix;
+        items.push({ el: el, target: parseInt(digits, 10), suffix: txt.slice(txt.search(/[0-9]/)).replace(/[0-9.]/g, ''), done: txt });
       });
       if (!items.length) return;
-      if (reduce) { items.forEach(function (it) { it.el.textContent = it.done; }); return; }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          io.unobserve(e.target);
-          var t0 = performance.now(), dur = 1300;
-          function step(now) {
-            var p = Math.min(1, (now - t0) / dur);
-            var k = 1 - Math.pow(1 - p, 3);
-            items.forEach(function (it) {
-              it.el.textContent = (p < 1 ? group(Math.round(it.target * k)) + it.suffix : it.done);
-            });
-            if (p < 1) requestAnimationFrame(step);
-          }
-          requestAnimationFrame(step);
-        });
-      }, { threshold: 0.4 });
-      io.observe(wrap);
+      if (reduce) return;
+      items.forEach(function (it) { it.el.textContent = '0' + it.suffix; });
+      pending.push({ el: wrap, done: false, run: function () {
+        var t0 = performance.now(), dur = 1300;
+        function step(now) {
+          var p = Math.min(1, (now - t0) / dur);
+          var k = 1 - Math.pow(1 - p, 3);
+          items.forEach(function (it) { it.el.textContent = (p < 1 ? group(Math.round(it.target * k)) + it.suffix : it.done); });
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      } });
     }
 
     if (!reduce) reveal();
     counters();
+    if (pending.length) watch();
   })();
-
 </script>
 </body>
 </html>
