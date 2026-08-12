@@ -34,6 +34,7 @@
     [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
     [data-m~="grid2"] { grid-template-columns: 1fr !important; }
     [data-m~="grid4"] { grid-template-columns: 1fr 1fr !important; }
+    [data-m~="grid4"] > [data-m~="stat"]:last-child { grid-column: 1 / -1; border-right: none !important; border-top: 1px solid #dbe2ea; }
     [data-m~="bio"] { grid-template-columns: 1fr !important; }
     [data-m~="bioimg"] { border-right: none !important; border-bottom: 1px solid #c3ccd8 !important; }
     [data-m~="h1"] { font-size: 34px !important; max-width: 12em !important; }
@@ -59,6 +60,7 @@
     [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
     [data-m~="grid2"] { grid-template-columns: 1fr !important; }
     [data-m~="grid4"] { grid-template-columns: 1fr 1fr !important; }
+    [data-m~="grid4"] > [data-m~="stat"]:last-child { grid-column: 1 / -1; border-right: none !important; border-top: 1px solid #dbe2ea; }
     [data-m~="bio"] { grid-template-columns: 1fr !important; }
     [data-m~="bioimg"] { border-right: none !important; border-bottom: 1px solid #c3ccd8 !important; }
     [data-m~="h1"] { font-size: 34px !important; max-width: 12em !important; }
@@ -82,10 +84,19 @@
 <style>
   html { scroll-behavior: smooth; scroll-padding-top: 74px; }
   a:hover { color: #2f6df0; }
-  footer a:hover { border-color: #2f6df0; }
+  footer a:hover, [data-m~="prevlink"]:hover { background: #2f6df0; color: #fff; }
   input:focus, textarea:focus { border-color: #2f6df0; outline: none; }
   button[type="submit"]:hover { background: #1f57cd; }
   #mk-burger:hover { border-color: #2f6df0; }
+  @media (max-width: 940px) {
+    [data-m~="hdrnav"] { display: none !important; }
+    [data-m~="burger"] { display: flex !important; }
+  }
+  @container pg (max-width: 940px) {
+    [data-m~="hdrnav"] { display: none !important; }
+    [data-m~="burger"] { display: flex !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -108,6 +119,7 @@
         <a href="reference.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;">Reference</a>
         <a href="#sec-team" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;">Tim</a>
         <a href="#sec-contact" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#6b7c90;">Kontakt</a>
+        <a href="pregled.html" data-m="prevlink" style="cursor:pointer; white-space:nowrap; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; padding:8px 12px; margin-left:6px; color:#2f6df0; border:1px solid #2f6df0;">Pregled sa fotografijama</a>
       </nav>
       <button type="button" id="mk-burger" aria-label="Meni" data-m="burger" style="display:none; align-items:center; gap:10px; background:transparent; border:1px solid #c3ccd8; padding:10px 14px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#132438; min-height:44px;">
         <span style="display:flex; flex-direction:column; gap:4px;">
@@ -124,7 +136,8 @@
         <a href="#sec-about" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">O nama</a>
         <a href="reference.html" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">Reference</a>
         <a href="#sec-team" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">Tim</a>
-        <a href="#sec-contact" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b;">Kontakt</a>
+        <a href="#sec-contact" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#46586b; border-bottom:1px solid #dbe2ea;">Kontakt</a>
+        <a href="pregled.html" style="cursor:pointer; padding:16px 20px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#2f6df0;">Pregled sa fotografijama</a>
       </nav>
     </div>
   </header>
@@ -144,11 +157,7 @@
     </section>
 
     <section style="border-top:1px solid #c3ccd8; border-bottom:1px solid #c3ccd8; background:rgba(214,223,234,.55);">
-      <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(4,1fr);" data-m="padx grid4">
-        <div style="padding:40px 24px; text-align:center; border-right:1px solid #dbe2ea;" data-m="stat">
-          <div style="font-weight:800; font-size:38px; letter-spacing:-.02em;">1992</div>
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.1em; text-transform:uppercase; margin-top:8px;">Godina osnivanja</div>
-        </div>
+      <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr);" data-m="padx grid4">
         <div style="padding:40px 24px; text-align:center; border-right:1px solid #dbe2ea;" data-m="stat">
           <div style="font-weight:800; font-size:38px; letter-spacing:-.02em;">34</div>
           <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.1em; text-transform:uppercase; margin-top:8px;">Godine iskustva</div>
@@ -382,7 +391,7 @@
       <div style="max-width:1240px; margin:0 auto; padding:20px 40px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#7f93a8; letter-spacing:.06em; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;" data-m="padx">
         <span>© 2026 MARNIK d.o.o. Beograd</span>
         <span>PIB 100120368 · MB 07812868</span>
-        <a href="pregled.html" style="color:#7f93a8; text-decoration:none; border-bottom:1px solid #c3ccd8;">Radni pregled sa fotografijama →</a>
+        <a href="pregled.html" style="color:#2f6df0; text-decoration:none; border:1px solid #2f6df0; padding:6px 12px; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;">Radni pregled sa fotografijama →</a>
       </div>
     </div>
   </footer>

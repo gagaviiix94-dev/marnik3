@@ -34,6 +34,7 @@
     [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
     [data-m~="grid2"] { grid-template-columns: 1fr !important; }
     [data-m~="grid4"] { grid-template-columns: 1fr 1fr !important; }
+    [data-m~="grid4"] > [data-m~="stat"]:last-child { grid-column: 1 / -1; border-right: none !important; border-top: 1px solid #dbe2ea; }
     [data-m~="bio"] { grid-template-columns: 1fr !important; }
     [data-m~="bioimg"] { border-right: none !important; border-bottom: 1px solid #c3ccd8 !important; }
     [data-m~="h1"] { font-size: 34px !important; max-width: 12em !important; }
@@ -59,6 +60,7 @@
     [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
     [data-m~="grid2"] { grid-template-columns: 1fr !important; }
     [data-m~="grid4"] { grid-template-columns: 1fr 1fr !important; }
+    [data-m~="grid4"] > [data-m~="stat"]:last-child { grid-column: 1 / -1; border-right: none !important; border-top: 1px solid #dbe2ea; }
     [data-m~="bio"] { grid-template-columns: 1fr !important; }
     [data-m~="bioimg"] { border-right: none !important; border-bottom: 1px solid #c3ccd8 !important; }
     [data-m~="h1"] { font-size: 34px !important; max-width: 12em !important; }
@@ -159,11 +161,7 @@
     </section>
 
     <section style="border-top:1px solid #c3ccd8; border-bottom:1px solid #c3ccd8; background:rgba(214,223,234,.55);">
-      <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(4,1fr);" data-m="padx grid4">
-        <div style="padding:40px 24px; text-align:center; border-right:1px solid #dbe2ea;" data-m="stat">
-          <div style="font-weight:800; font-size:38px; letter-spacing:-.02em;">1992</div>
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.1em; text-transform:uppercase; margin-top:8px;">Godina osnivanja</div>
-        </div>
+      <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr);" data-m="padx grid4">
         <div style="padding:40px 24px; text-align:center; border-right:1px solid #dbe2ea;" data-m="stat">
           <div style="font-weight:800; font-size:38px; letter-spacing:-.02em;">34</div>
           <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.1em; text-transform:uppercase; margin-top:8px;">Godine iskustva</div>
