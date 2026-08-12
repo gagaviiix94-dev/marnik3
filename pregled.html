@@ -3,12 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>Radni pregled - MARNIK</title>
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
 <style>
@@ -16,6 +15,17 @@
   body { margin: 0; }
   a { color: inherit; text-decoration: none; }
   ::selection { background: #2f6df0; color: #fff; }
+  @keyframes mkUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { [style*="animation:mkUp"] { animation: none !important; } }
+  [data-m~="burger"] span[data-l] { transition: transform .3s ease, opacity .3s ease; }
+  [data-m~="burger"][data-open="true"] span[data-l="1"] { transform: translateY(5.5px) rotate(45deg); }
+  [data-m~="burger"][data-open="true"] span[data-l="2"] { opacity: 0; }
+  [data-m~="burger"][data-open="true"] span[data-l="3"] { transform: translateY(-5.5px) rotate(-45deg); }
+  [data-m~="hdrnav"] > a { position: relative; transition: color .3s; }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"])::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px; height: 2px; background: #2f6df0; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"]):hover::after { transform: scaleX(1); }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"]):hover { color: #132438; }
+  image-slot { display:block; width:100%; height:100%; }
   #mk-map { background:#e6ebf1; }
   #mk-map .leaflet-container { font-family:'IBM Plex Mono',monospace; }
   #mk-map .leaflet-control-attribution { font-size:9px; }
@@ -34,6 +44,7 @@
     [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
     [data-m~="grid2"] { grid-template-columns: 1fr !important; }
     [data-m~="grid4"] { grid-template-columns: 1fr 1fr !important; }
+    [data-m~="grid4"] > [data-m~="stat"]:last-child { grid-column: 1 / -1; border-right: none !important; border-top: 1px solid #dbe2ea; }
     [data-m~="bio"] { grid-template-columns: 1fr !important; }
     [data-m~="bioimg"] { border-right: none !important; border-bottom: 1px solid #c3ccd8 !important; }
     [data-m~="h1"] { font-size: 34px !important; max-width: 12em !important; }
@@ -59,6 +70,7 @@
     [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
     [data-m~="grid2"] { grid-template-columns: 1fr !important; }
     [data-m~="grid4"] { grid-template-columns: 1fr 1fr !important; }
+    [data-m~="grid4"] > [data-m~="stat"]:last-child { grid-column: 1 / -1; border-right: none !important; border-top: 1px solid #dbe2ea; }
     [data-m~="bio"] { grid-template-columns: 1fr !important; }
     [data-m~="bioimg"] { border-right: none !important; border-bottom: 1px solid #c3ccd8 !important; }
     [data-m~="h1"] { font-size: 34px !important; max-width: 12em !important; }
@@ -126,9 +138,9 @@
       </nav>
       <button type="button" id="mk-burger" aria-label="Meni" data-m="burger" style="display:none; align-items:center; gap:10px; background:transparent; border:1px solid #c3ccd8; padding:10px 14px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#132438; min-height:44px;">
         <span style="display:flex; flex-direction:column; gap:4px;">
-          <span style="display:block; width:18px; height:1.5px; background:#132438;"></span>
-          <span style="display:block; width:18px; height:1.5px; background:#132438;"></span>
-          <span style="display:block; width:18px; height:1.5px; background:#132438;"></span>
+          <span data-l="1" style="display:block; width:18px; height:1.5px; background:#132438;"></span>
+          <span data-l="2" style="display:block; width:18px; height:1.5px; background:#132438;"></span>
+          <span data-l="3" style="display:block; width:18px; height:1.5px; background:#132438;"></span>
         </span>
         <span>Meni</span>
       </button>
@@ -148,22 +160,18 @@
 
     <section style="max-width:1240px; margin:0 auto; padding:96px 40px 72px; display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;" data-m="pad col">
       <div>
-        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.18em; text-transform:uppercase; margin-bottom:26px;">Projektni biro · Beograd</div>
-        <h1 data-m="h1" style="font-weight:800; font-size:64px; line-height:1.02; letter-spacing:-.02em; margin:0 0 26px; text-wrap:balance;">Arhitektura koja traje</h1>
-        <p style="font-size:18px; line-height:1.6; color:#46586b; max-width:30em; margin:0 0 36px;">Projektni biro iz Beograda osnovan 1992. godine. Stambeni i poslovni objekti, hoteli i sportski sadržaji - od ideje do realizacije.</p>
-        <a href="pregled-reference.html" style="cursor:pointer; display:inline-block; font-size:14px; font-weight:600; letter-spacing:.02em; color:#ffffff; background:var(--acc,#2f6df0); padding:15px 28px; border-radius:2px;">Pogledajte reference →</a>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.18em; text-transform:uppercase; margin-bottom:26px; animation:mkUp .6s ease-out .1s both;">Projektni biro · Beograd</div>
+        <h1 data-m="h1" style="animation:mkUp .6s ease-out .25s both; font-weight:800; font-size:64px; line-height:1.02; letter-spacing:-.02em; margin:0 0 26px; text-wrap:balance;">Arhitektura koja traje</h1>
+        <p style="font-size:18px; line-height:1.6; color:#46586b; max-width:30em; margin:0 0 36px; animation:mkUp .6s ease-out .4s both;">Projektni biro iz Beograda osnovan 1992. godine. Stambeni i poslovni objekti, hoteli i sportski sadržaji - od ideje do realizacije.</p>
+        <a href="pregled-reference.html" style="cursor:pointer; display:inline-block; font-size:14px; font-weight:600; letter-spacing:.02em; color:#ffffff; background:var(--acc,#2f6df0); padding:15px 28px; border-radius:2px; animation:mkUp .6s ease-out .55s both;">Pogledajte reference →</a>
       </div>
-      <div style="aspect-ratio:4/5; border:1px solid #c3ccd8;">
+      <div style="aspect-ratio:4/5; border:1px solid #c3ccd8; animation:mkUp .7s ease-out .35s both;">
         <div class="mk-slot" data-slot="mk-hero" data-ph="Hero - reper projekat" tabindex="0" role="button" aria-label="Ubacite fotografiju: Hero - reper projekat"><span class="mk-slot-txt">Hero - reper projekat</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div>
       </div>
     </section>
 
     <section style="border-top:1px solid #c3ccd8; border-bottom:1px solid #c3ccd8; background:rgba(214,223,234,.55);">
-      <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(4,1fr);" data-m="padx grid4">
-        <div style="padding:40px 24px; text-align:center; border-right:1px solid #dbe2ea;" data-m="stat">
-          <div style="font-weight:800; font-size:38px; letter-spacing:-.02em;">1992</div>
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.1em; text-transform:uppercase; margin-top:8px;">Godina osnivanja</div>
-        </div>
+      <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr);" data-m="padx grid4">
         <div style="padding:40px 24px; text-align:center; border-right:1px solid #dbe2ea;" data-m="stat">
           <div style="font-weight:800; font-size:38px; letter-spacing:-.02em;">34</div>
           <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6b7c90; letter-spacing:.1em; text-transform:uppercase; margin-top:8px;">Godine iskustva</div>
@@ -274,7 +282,7 @@
           <div style="display:flex; flex-direction:column; border-right:1px solid #c3ccd8;" data-m="bioimg">
             <div style="aspect-ratio:1/1;"><div class="mk-slot" data-slot="mk-director" data-ph="Portret" tabindex="0" role="button" aria-label="Ubacite fotografiju: Portret"><span class="mk-slot-txt">Portret</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
             <div style="padding:26px 28px;">
-              <div style="font-weight:700; font-size:22px;">Nada Naletina, glavni arhitekta</div>
+              <div style="font-weight:700; font-size:22px;">Nada Naletina, DIA</div>
               <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.08em; margin-top:8px;">Direktor i osnivač</div>
             </div>
           </div>
@@ -288,7 +296,7 @@
           <div style="display:flex; flex-direction:column; border-right:1px solid #c3ccd8;" data-m="bioimg">
             <div style="aspect-ratio:1/1;"><div class="mk-slot" data-slot="mk-deputy" data-ph="Portret" tabindex="0" role="button" aria-label="Ubacite fotografiju: Portret"><span class="mk-slot-txt">Portret</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
             <div style="padding:26px 28px;">
-              <div style="font-weight:700; font-size:22px;">Nikola Naletina, arhitekta</div>
+              <div style="font-weight:700; font-size:22px;">Nikola Naletina, DIA</div>
               <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.08em; margin-top:8px;">Zamenik direktora</div>
             </div>
           </div>
@@ -408,10 +416,11 @@
     b.addEventListener('click', function () {
       var open = m.style.display !== 'none';
       m.style.display = open ? 'none' : 'flex';
+      b.setAttribute('data-open', open ? 'false' : 'true');
       b.lastElementChild.textContent = open ? 'Meni' : 'Zatvori';
     });
     m.addEventListener('click', function (e) {
-      if (e.target.closest('a')) { m.style.display = 'none'; b.lastElementChild.textContent = 'Meni'; }
+      if (e.target.closest('a')) { m.style.display = 'none'; b.setAttribute('data-open', 'false'); b.lastElementChild.textContent = 'Meni'; }
     });
   }
   var f = document.getElementById('mk-form');
@@ -522,6 +531,90 @@
   }
   initMap();
 })();
+
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function container(sec) {
+      var c = sec, i = 0;
+      while (i < 2 && c.children.length === 1 && c.firstElementChild.tagName === 'DIV') { c = c.firstElementChild; i++; }
+      return c;
+    }
+    function reveal() {
+      var secs = [];
+      ['#sec-about', '#sec-services', '#sec-team', '#sec-contact'].forEach(function (sel) {
+        var el = document.querySelector(sel); if (el) secs.push(el);
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('main > section'), function (s) {
+        if (!s.id && /Reper projekti/.test(s.textContent) && secs.indexOf(s) < 0) secs.push(s);
+      });
+      secs.forEach(function (sec) {
+        var kids = Array.prototype.slice.call(container(sec).children);
+        if (!kids.length) return;
+        kids.forEach(function (k) {
+          k.style.opacity = '0';
+          k.style.transform = 'translateY(28px)';
+          k.style.transition = 'opacity .75s cubic-bezier(.22,.61,.36,1), transform .75s cubic-bezier(.22,.61,.36,1)';
+        });
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            io.unobserve(e.target);
+            kids.forEach(function (k, i) {
+              setTimeout(function () {
+                k.style.opacity = '1';
+                k.style.transform = 'translateY(0)';
+                setTimeout(function () { k.style.transform = 'none'; k.style.transition = ''; }, 850);
+              }, i * 170);
+            });
+          });
+        }, { threshold: 0.05, rootMargin: '0px 0px -14% 0px' });
+        io.observe(sec);
+      });
+    }
+
+    function group(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+    function counters() {
+      var wrap = document.querySelector('[data-m~="grid4"]');
+      if (!wrap) return;
+      var cells = wrap.querySelectorAll('[data-m~="stat"]');
+      var items = [];
+      Array.prototype.forEach.call(cells, function (cell) {
+        var el = cell.firstElementChild;
+        if (!el) return;
+        var txt = el.textContent;
+        var digits = txt.replace(/[^0-9]/g, '');
+        if (!digits) return;
+        var target = parseInt(digits, 10);
+        var suffix = txt.slice(txt.search(/[0-9]/)).replace(/[0-9.]/g, '');
+        items.push({ el: el, target: target, suffix: suffix, done: txt });
+        el.textContent = '0' + suffix;
+      });
+      if (!items.length) return;
+      if (reduce) { items.forEach(function (it) { it.el.textContent = it.done; }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          io.unobserve(e.target);
+          var t0 = performance.now(), dur = 1300;
+          function step(now) {
+            var p = Math.min(1, (now - t0) / dur);
+            var k = 1 - Math.pow(1 - p, 3);
+            items.forEach(function (it) {
+              it.el.textContent = (p < 1 ? group(Math.round(it.target * k)) + it.suffix : it.done);
+            });
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.4 });
+      io.observe(wrap);
+    }
+
+    if (!reduce) reveal();
+    counters();
+  })();
+
 </script>
 </body>
 </html>
