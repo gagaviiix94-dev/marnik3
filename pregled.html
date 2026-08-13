@@ -162,7 +162,7 @@
 
     <section data-m="herosec" style="position:relative; min-height:660px; display:flex; align-items:center; overflow:hidden; border-bottom:1px solid #c3ccd8;">
       <div style="position:absolute; inset:0; z-index:0;"><div class="mk-slot" data-slot="mk-hero" data-ph="Hero - reper projekat" tabindex="0" role="button" aria-label="Ubacite fotografiju: Hero - reper projekat"><span class="mk-slot-txt">Hero - reper projekat</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
-      <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(100deg, rgba(238,241,245,.97) 0%, rgba(238,241,245,.92) 34%, rgba(238,241,245,.45) 66%, rgba(238,241,245,.12) 100%);"></div>
+      <div data-m="heroscrim" style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(100deg, rgba(238,241,245,.97) 0%, rgba(238,241,245,.92) 34%, rgba(238,241,245,.45) 66%, rgba(238,241,245,.12) 100%);"></div>
       <div data-m="pad" style="position:relative; z-index:2; pointer-events:none; width:100%; max-width:1240px; margin:0 auto; padding:120px 40px;">
         <div style="max-width:34em; pointer-events:auto;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--acc,#2f6df0); letter-spacing:.18em; text-transform:uppercase; margin-bottom:26px; animation:mkUp .6s ease-out .1s both;">Projektni biro · Beograd</div>
@@ -412,6 +412,56 @@
     </div>
   </footer>
 </div>
+<div id="mk-panel" style="position:fixed; right:18px; bottom:18px; z-index:9999; width:298px; max-height:calc(100vh - 36px); display:flex; flex-direction:column; background:#ffffff; border:1px solid #c3ccd8; box-shadow:0 18px 40px rgba(19,36,56,.18); font-family:'IBM Plex Mono',monospace; color:#132438;">
+  <button type="button" id="mk-panel-t" style="width:100%; flex:none; display:flex; align-items:center; justify-content:space-between; gap:10px; background:#132438; color:#eef1f5; border:none; padding:11px 14px; font-family:inherit; font-size:11px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer;">
+    <span>Izgled sajta</span><span id="mk-panel-c" style="font-size:13px;">+</span>
+  </button>
+  <div id="mk-panel-b" style="padding:16px 14px 14px; display:none; flex-direction:column; gap:14px; overflow-y:auto; min-height:0;">
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; gap:0;">
+        <button type="button" class="mk-ch" data-ch="text" style="flex:1; display:flex; align-items:center; justify-content:center; gap:5px; background:#132438; color:#fff; border:1px solid #132438; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;"><span class="mk-dot" style="width:9px; height:9px; border:1px solid rgba(255,255,255,.5);"></span>Tekst</button>
+        <button type="button" class="mk-ch" data-ch="bg" style="flex:1; display:flex; align-items:center; justify-content:center; gap:5px; background:#fff; color:#46586b; border:1px solid #c3ccd8; border-left:none; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;"><span class="mk-dot" style="width:9px; height:9px; border:1px solid #c3ccd8;"></span>Pozadina</button>
+        <button type="button" class="mk-ch" data-ch="btn" style="flex:1; display:flex; align-items:center; justify-content:center; gap:5px; background:#fff; color:#46586b; border:1px solid #c3ccd8; border-left:none; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;"><span class="mk-dot" style="width:9px; height:9px; border:1px solid #c3ccd8;"></span>Dugmići</button>
+      </div>
+      <div id="mk-sv" style="position:relative; width:100%; height:108px; border:1px solid #c3ccd8; cursor:crosshair; touch-action:none;">
+        <div id="mk-sv-h" style="position:absolute; width:14px; height:14px; margin:-7px 0 0 -7px; border:2px solid #fff; border-radius:50%; box-shadow:0 0 0 1px rgba(19,36,56,.55); pointer-events:none;"></div>
+      </div>
+      <div id="mk-hue" style="position:relative; width:100%; height:14px; border:1px solid #c3ccd8; cursor:ew-resize; touch-action:none; background:linear-gradient(to right,#f00 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,#f00 100%);">
+        <div id="mk-hue-h" style="position:absolute; top:-3px; width:6px; height:18px; margin-left:-3px; background:#fff; border:1px solid rgba(19,36,56,.55); pointer-events:none;"></div>
+      </div>
+      <div id="mk-fields" style="display:flex; gap:6px;"></div>
+      <div style="display:flex; gap:0;">
+        <button type="button" class="mk-fmt" data-fmt="hex" style="flex:1; background:#132438; color:#fff; border:1px solid #132438; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Hex</button>
+        <button type="button" class="mk-fmt" data-fmt="rgb" style="flex:1; background:#fff; color:#46586b; border:1px solid #c3ccd8; border-left:none; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Rgb</button>
+        <button type="button" class="mk-fmt" data-fmt="hsl" style="flex:1; background:#fff; color:#46586b; border:1px solid #c3ccd8; border-left:none; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Hsl</button>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button type="button" id="mk-c-go" style="flex:1; background:#132438; color:#fff; border:1px solid #132438; padding:8px 10px; font-family:inherit; font-size:11px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">Primeni boje</button>
+        <button type="button" id="mk-c-undo" style="flex:1; background:none; color:#46586b; border:1px solid #c3ccd8; padding:8px 10px; font-family:inherit; font-size:11px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">Poništi izbor</button>
+      </div>
+    </div>
+    <div style="border-top:1px solid #dbe2ea; padding-top:13px; display:flex; flex-direction:column; gap:9px;">
+      <span style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#46586b;">Font</span>
+      <select id="mk-f-sel" style="width:100%; padding:7px 8px; border:1px solid #c3ccd8; background:#fff; font-family:inherit; font-size:12px; color:#132438;">
+        <option value="Archivo">Archivo (podrazumevani)</option>
+        <option value="Manrope">Manrope</option>
+        <option value="Work Sans">Work Sans</option>
+        <option value="Source Serif 4">Source Serif 4</option>
+        <option value="Playfair Display">Playfair Display</option>
+        <option value="Space Grotesk">Space Grotesk</option>
+      </select>
+      <input type="text" id="mk-f-own" placeholder="Naziv fonta ili Google Fonts link" style="width:100%; box-sizing:border-box; padding:7px 8px; border:1px solid #c3ccd8; background:#fff; font-family:inherit; font-size:11px; color:#132438;">
+      <div style="display:flex; gap:8px;">
+        <button type="button" id="mk-f-go" style="flex:1; background:#132438; color:#fff; border:1px solid #132438; padding:8px 10px; font-family:inherit; font-size:11px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">Primeni font</button>
+        <button type="button" id="mk-f-undo" style="flex:1; background:none; color:#46586b; border:1px solid #c3ccd8; padding:8px 10px; font-family:inherit; font-size:11px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">Poništi izbor</button>
+      </div>
+    </div>
+    <div style="border-top:1px solid #dbe2ea; padding-top:13px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+      <button type="button" id="mk-th-reset" style="background:none; color:#46586b; border:1px solid #c3ccd8; padding:8px 12px; font-family:inherit; font-size:11px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Početne vrednosti</button>
+      <span style="font-size:10px; line-height:1.5; color:#8b9aab; text-align:right;">Važi samo<br>u ovom pregledu</span>
+    </div>
+  </div>
+</div>
 <script>
 (function () {
   var b = document.getElementById('mk-burger'), m = document.getElementById('mk-menu');
@@ -512,6 +562,7 @@
   var x = document.getElementById('mk-exit');
   if (x) x.addEventListener('click', function () {
     Object.keys(localStorage).filter(function (k) { return k.indexOf(KEY) === 0; }).forEach(function (k) { localStorage.removeItem(k); });
+    try { localStorage.removeItem('mk-theme'); } catch (err) {}
     window.location.href = 'index.html';
   });
 
@@ -635,6 +686,302 @@
     counters();
     if (pending.length) watch();
   })();
+
+  (function () {
+    var TKEY = 'mk-theme';
+    var DEF = { text: '#132438', bg: '#eef1f5', btn: '#2f6df0', font: '', fontUrl: '' };
+    var scope = document.querySelector('body > div[style*="--acc"]');
+    if (!scope) return;
+    scope.id = 'mk-scope';
+
+    var st = document.createElement('style');
+    st.id = 'mk-theme-style';
+    document.head.appendChild(st);
+    var fl = document.createElement('link');
+    fl.rel = 'stylesheet';
+
+    function read() {
+      try { return Object.assign({}, DEF, JSON.parse(localStorage.getItem(TKEY) || '{}')); }
+      catch (e) { return Object.assign({}, DEF); }
+    }
+    function save(t) { try { localStorage.setItem(TKEY, JSON.stringify(t)); } catch (e) {} }
+    function lum(hex) {
+      var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      if (!m) return 0;
+      var c = [1, 2, 3].map(function (i) {
+        var v = parseInt(m[i], 16) / 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * c[0] + 0.7152 * c[1] + 0.4072 * c[2];
+    }
+    function apply(t) {
+      var css = '';
+      if (t.text !== DEF.text) {
+        css += '#mk-scope :is(h1,h2,h3,h4,p,li,td,th,label,blockquote,strong,em,div,span,a,footer):not([style*="var(--acc"]):not([style*="color:#ffffff"]):not([style*="color:#fff"]) { color: ' + t.text + ' !important; }';
+      }
+      if (t.bg !== DEF.bg) {
+        css += '#mk-scope, #mk-scope > div, #mk-scope header, #mk-scope main, #mk-scope section, #mk-scope footer, #mk-scope [style*="background:#eef1f5"], #mk-scope [style*="background:#e6ebf1"], #mk-scope [style*="background:rgba(214,223,234"], #mk-scope [style*="background:rgba(238,241,245"] { background-color: ' + t.bg + ' !important; }';
+        css += '#mk-scope input, #mk-scope textarea { background-color: ' + t.bg + ' !important; }';
+        var hx = /^#[0-9a-f]{6}$/i.test(t.bg) ? t.bg : null;
+        if (hx) css += '#mk-scope [data-m~="heroscrim"] { background-image: linear-gradient(100deg, ' + hx + 'F7 0%, ' + hx + 'EB 34%, ' + hx + '73 66%, ' + hx + '1F 100%) !important; }';
+        else css += '#mk-scope [data-m~="heroscrim"] { background-image: none !important; background-color: ' + t.bg + ' !important; opacity: .9; }';
+      }
+      scope.style.setProperty('--acc', t.btn);
+      if (t.btn !== DEF.btn) {
+        css += '#mk-scope [style*="background:var(--acc"], #mk-scope button[type="submit"] { background-color: ' + t.btn + ' !important; color: ' + (lum(t.btn) > 0.55 ? '#132438' : '#ffffff') + ' !important; }';
+        css += '#mk-scope [data-m~="hdrnav"] > a::after { background: ' + t.btn + ' !important; }';
+      }
+      if (t.font) {
+        if (t.fontUrl && fl.href !== t.fontUrl) { fl.href = t.fontUrl; if (!fl.parentNode) document.head.appendChild(fl); }
+        css += '#mk-scope :is(h1,h2,h3,h4,p,li,a,div,span,button,input,textarea,label,blockquote,select):not([style*="Plex Mono"]) { font-family: "' + t.font + '", Archivo, sans-serif !important; }';
+      }
+      st.textContent = css;
+    }
+
+    var t = read();
+    apply(t);
+
+    var fmt = 'hex';
+    var active = 'text';
+    var elSel = document.getElementById('mk-f-sel');
+    var elOwn = document.getElementById('mk-f-own');
+    var committed = { text: t.text, bg: t.bg, btn: t.btn };
+    var draft = { text: t.text, bg: t.bg, btn: t.btn };
+    var sv = document.getElementById('mk-sv');
+    var svH = document.getElementById('mk-sv-h');
+    var hue = document.getElementById('mk-hue');
+    var hueH = document.getElementById('mk-hue-h');
+    var fields = document.getElementById('mk-fields');
+    var hsv = { h: 0, s: 0, v: 0 };
+
+    function toRgb(hex) {
+      var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [0, 0, 0];
+    }
+    function toHex(r, g, b) {
+      return '#' + [r, g, b].map(function (v) {
+        v = Math.max(0, Math.min(255, Math.round(v)));
+        return (v < 16 ? '0' : '') + v.toString(16);
+      }).join('');
+    }
+    function rgbToHsv(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn, h = 0;
+      if (d) {
+        if (mx === r) h = 60 * (((g - b) / d) % 6);
+        else if (mx === g) h = 60 * ((b - r) / d + 2);
+        else h = 60 * ((r - g) / d + 4);
+      }
+      if (h < 0) h += 360;
+      return { h: h, s: mx ? d / mx : 0, v: mx };
+    }
+    function hsvToHex(o) {
+      var c = o.v * o.s, x = c * (1 - Math.abs(((o.h / 60) % 2) - 1)), m = o.v - c;
+      var p = [[c, x, 0], [x, c, 0], [0, c, x], [0, x, c], [x, 0, c], [c, 0, x]][Math.floor(((o.h % 360) + 360) % 360 / 60)];
+      return toHex((p[0] + m) * 255, (p[1] + m) * 255, (p[2] + m) * 255);
+    }
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn, h = 0, s = 0, l = (mx + mn) / 2;
+      if (d) {
+        s = d / (1 - Math.abs(2 * l - 1));
+        if (mx === r) h = 60 * (((g - b) / d) % 6);
+        else if (mx === g) h = 60 * ((b - r) / d + 2);
+        else h = 60 * ((r - g) / d + 4);
+      }
+      if (h < 0) h += 360;
+      return [Math.round(h), Math.round(s * 100), Math.round(l * 100)];
+    }
+    function hslToHex(h, s, l) {
+      s /= 100; l /= 100;
+      var c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = l - c / 2;
+      var p = [[c, x, 0], [x, c, 0], [0, c, x], [0, x, c], [x, 0, c], [c, 0, x]][Math.floor(((h % 360) + 360) % 360 / 60)];
+      return toHex((p[0] + m) * 255, (p[1] + m) * 255, (p[2] + m) * 255);
+    }
+    function parse(str) {
+      str = String(str).trim().toLowerCase();
+      var m = /^#?([0-9a-f]{6})$/.exec(str);
+      if (m) return '#' + m[1];
+      m = /^#?([0-9a-f]{3})$/.exec(str);
+      if (m) return '#' + m[1].split('').map(function (c) { return c + c; }).join('');
+      m = /^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)/.exec(str);
+      if (m) return toHex(+m[1], +m[2], +m[3]);
+      m = /^hsla?\(\s*(-?[\d.]+)[,\s]+([\d.]+)%?[,\s]+([\d.]+)%?/.exec(str);
+      if (m) return hslToHex(+m[1], +m[2], +m[3]);
+      return null;
+    }
+    function dirty() { return draft.text !== committed.text || draft.bg !== committed.bg || draft.btn !== committed.btn; }
+    function live() { apply({ text: draft.text, bg: draft.bg, btn: draft.btn, font: t.font, fontUrl: t.fontUrl }); }
+
+    function fieldDefs() {
+      var c = toRgb(draft[active]);
+      if (fmt === 'rgb') return [{ k: 'r', l: 'R', v: c[0] }, { k: 'g', l: 'G', v: c[1] }, { k: 'b', l: 'B', v: c[2] }];
+      if (fmt === 'hsl') { var h = rgbToHsl(c[0], c[1], c[2]); return [{ k: 'h', l: 'H', v: h[0] }, { k: 's', l: 'S', v: h[1] }, { k: 'l', l: 'L', v: h[2] }]; }
+      return [{ k: 'hex', l: 'Hex', v: draft[active] }];
+    }
+    function renderFields() {
+      fields.innerHTML = '';
+      fieldDefs().forEach(function (d) {
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'flex:1; display:flex; flex-direction:column; gap:3px; align-items:center;';
+        var inp = document.createElement('input');
+        inp.type = 'text';
+        inp.value = d.v;
+        inp.spellcheck = false;
+        inp.dataset.k = d.k;
+        inp.style.cssText = 'width:100%; box-sizing:border-box; padding:5px 6px; border:1px solid #c3ccd8; background:#fff; font-family:inherit; font-size:11px; text-align:center; color:#132438;';
+        var lab = document.createElement('span');
+        lab.textContent = d.l;
+        lab.style.cssText = 'font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#8b9aab;';
+        inp.addEventListener('input', onField);
+        inp.addEventListener('blur', renderFields);
+        wrap.appendChild(inp); wrap.appendChild(lab);
+        fields.appendChild(wrap);
+      });
+    }
+    function onField() {
+      var vals = {};
+      Array.prototype.forEach.call(fields.querySelectorAll('input'), function (i) { vals[i.dataset.k] = i.value.trim(); });
+      var hex = null;
+      if (fmt === 'hex') hex = parse(vals.hex);
+      else if (fmt === 'rgb') hex = /^\d+$/.test(vals.r) && /^\d+$/.test(vals.g) && /^\d+$/.test(vals.b) ? toHex(+vals.r, +vals.g, +vals.b) : null;
+      else hex = /^-?[\d.]+$/.test(vals.h) && /^[\d.]+$/.test(vals.s) && /^[\d.]+$/.test(vals.l) ? hslToHex(+vals.h, +vals.s, +vals.l) : null;
+      var bad = !hex;
+      Array.prototype.forEach.call(fields.querySelectorAll('input'), function (i) { i.style.borderColor = bad ? '#c9a0a0' : '#c3ccd8'; });
+      if (bad) return;
+      draft[active] = hex;
+      var c = toRgb(hex);
+      hsv = rgbToHsv(c[0], c[1], c[2]);
+      paint(true);
+    }
+    function paint(skipFields) {
+      sv.style.background = 'linear-gradient(to top, #000, rgba(0,0,0,0)), linear-gradient(to right, #fff, rgba(255,255,255,0)), hsl(' + Math.round(hsv.h) + ', 100%, 50%)';
+      svH.style.left = (hsv.s * 100) + '%';
+      svH.style.top = ((1 - hsv.v) * 100) + '%';
+      svH.style.background = draft[active];
+      hueH.style.left = (hsv.h / 360 * 100) + '%';
+      Array.prototype.forEach.call(document.querySelectorAll('.mk-ch'), function (b) {
+        var on = b.dataset.ch === active;
+        b.style.background = on ? '#132438' : '#fff';
+        b.style.color = on ? '#fff' : '#46586b';
+        b.style.borderColor = on ? '#132438' : '#c3ccd8';
+        b.querySelector('.mk-dot').style.background = draft[b.dataset.ch];
+      });
+      var go = document.getElementById('mk-c-go');
+      go.style.background = dirty() ? '#2f6df0' : '#132438';
+      go.style.borderColor = dirty() ? '#2f6df0' : '#132438';
+      if (!skipFields) renderFields();
+      live();
+    }
+    function drag(el, fn) {
+      function move(e) {
+        var r = el.getBoundingClientRect();
+        fn(Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)));
+      }
+      el.addEventListener('pointerdown', function (e) {
+        el.setPointerCapture(e.pointerId);
+        move(e);
+        function mv(ev) { move(ev); }
+        function up() { el.removeEventListener('pointermove', mv); el.removeEventListener('pointerup', up); }
+        el.addEventListener('pointermove', mv);
+        el.addEventListener('pointerup', up);
+      });
+    }
+    drag(sv, function (x, y) { hsv.s = x; hsv.v = 1 - y; draft[active] = hsvToHex(hsv); paint(); });
+    drag(hue, function (x) { hsv.h = x * 360; draft[active] = hsvToHex(hsv); paint(); });
+
+    Array.prototype.forEach.call(document.querySelectorAll('.mk-ch'), function (b) {
+      b.addEventListener('click', function () {
+        active = b.dataset.ch;
+        var c = toRgb(draft[active]);
+        hsv = rgbToHsv(c[0], c[1], c[2]);
+        paint();
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.mk-fmt'), function (b) {
+      b.addEventListener('click', function () {
+        fmt = b.dataset.fmt;
+        Array.prototype.forEach.call(document.querySelectorAll('.mk-fmt'), function (o) {
+          var on = o === b;
+          o.style.background = on ? '#132438' : '#fff';
+          o.style.color = on ? '#fff' : '#46586b';
+          o.style.borderColor = on ? '#132438' : '#c3ccd8';
+        });
+        renderFields();
+      });
+    });
+
+    document.getElementById('mk-c-go').addEventListener('click', function () {
+      t.text = draft.text; t.bg = draft.bg; t.btn = draft.btn;
+      committed = { text: t.text, bg: t.bg, btn: t.btn };
+      apply(t); save(t); paint();
+    });
+    document.getElementById('mk-c-undo').addEventListener('click', function () {
+      draft = { text: DEF.text, bg: DEF.bg, btn: DEF.btn };
+      committed = { text: DEF.text, bg: DEF.bg, btn: DEF.btn };
+      t.text = DEF.text; t.bg = DEF.bg; t.btn = DEF.btn;
+      var c = toRgb(draft[active]);
+      hsv = rgbToHsv(c[0], c[1], c[2]);
+      apply(t);
+      if (t.font) save(t); else { try { localStorage.removeItem(TKEY); } catch (e) {} }
+      paint();
+    });
+    window.addEventListener('beforeunload', function () {
+      if (dirty()) save({ text: committed.text, bg: committed.bg, btn: committed.btn, font: t.font, fontUrl: t.fontUrl });
+    });
+
+    (function init() {
+      var c = toRgb(draft[active]);
+      hsv = rgbToHsv(c[0], c[1], c[2]);
+      paint();
+    })();
+    if (t.font && [].slice.call(elSel.options).some(function (o) { return o.value === t.font; })) elSel.value = t.font;
+    else if (t.font) elOwn.value = t.font;
+
+    function gUrl(name) {
+      return 'https://fonts.googleapis.com/css2?family=' + name.trim().replace(/\s+/g, '+') + ':wght@400;500;600;700;800&display=swap';
+    }
+    function setFont(name, url) {
+      t.font = name === 'Archivo' ? '' : name;
+      t.fontUrl = t.font ? (url || gUrl(name)) : '';
+      apply(t); save(t);
+    }
+    elSel.addEventListener('change', function () { elOwn.value = ''; setFont(elSel.value, ''); });
+    document.getElementById('mk-f-go').addEventListener('click', function () {
+      var v = elOwn.value.trim();
+      if (!v) { setFont(elSel.value, ''); return; }
+      if (/^https?:\/\//i.test(v)) {
+        var m = /family=([^:&]+)/i.exec(v);
+        if (!m) { window.alert('U linku nema imena fonta (family=...). Nalepite ceo Google Fonts link.'); return; }
+        setFont(decodeURIComponent(m[1]).replace(/\+/g, ' '), v);
+      } else {
+        setFont(v, gUrl(v));
+      }
+    });
+
+    document.getElementById('mk-f-undo').addEventListener('click', function () {
+      elOwn.value = '';
+      elSel.value = 'Archivo';
+      t.font = ''; t.fontUrl = '';
+      apply(t);
+      if (t.text !== DEF.text || t.bg !== DEF.bg || t.btn !== DEF.btn) save(t);
+      else { try { localStorage.removeItem(TKEY); } catch (e) {} }
+    });
+
+    document.getElementById('mk-th-reset').addEventListener('click', function () {
+      try { localStorage.removeItem(TKEY); } catch (e) {}
+      window.location.reload();
+    });
+
+    var body = document.getElementById('mk-panel-b');
+    var cue = document.getElementById('mk-panel-c');
+    document.getElementById('mk-panel-t').addEventListener('click', function () {
+      var open = body.style.display !== 'none';
+      body.style.display = open ? 'none' : 'flex';
+      cue.textContent = open ? '+' : '\u2013';
+    });
+  })();
+
 </script>
 </body>
 </html>
