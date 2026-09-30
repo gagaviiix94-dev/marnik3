@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference - MARNIK arhitektonski projektni biro</title>
+<meta name="description" content="Reper projekti arhitektonskog biroa MARNIK - stambeni i poslovni objekti, hoteli, sportski sadržaji.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Karla:wght@400;500;600;700&amp;family=Fira+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: #b14e49; color: #fff; }
+  [data-m~="svc"], [data-m~="proj"] { transition: transform .3s cubic-bezier(.22,.61,.36,1), border-color .3s, box-shadow .3s; }
+  [data-m~="svc"]:hover { transform: translateY(-4px); position: relative; z-index: 2; box-shadow: inset 0 0 0 1px var(--acc,#b14e49), 0 14px 30px rgba(36,28,24,.14); }
+  [data-m~="proj"]:hover { transform: translateY(-4px); position: relative; z-index: 2; border-color: var(--acc,#b14e49); box-shadow: 0 14px 30px rgba(36,28,24,.14); }
+  [data-m~="hdrnav"] > a { position: relative; transition: color .3s; }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"])::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px; height: 2px; background: #b14e49; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"]):hover::after { transform: scaleX(1); }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"]):hover { color: #241c18; }
+  @media (max-width: 760px) {
+    [data-m~="pad"] { padding: 56px 20px !important; }
+    [data-m~="padx"] { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    [data-m~="grid2"] { grid-template-columns: 1fr !important; }
+    [data-m~="h2"] { font-size: 28px !important; margin-bottom: 32px !important; }
+    [data-m~="hdr"] { height: auto !important; padding: 12px 20px !important; flex-wrap: wrap !important; gap: 10px !important; }
+    [data-m~="hdrnav"] { order: 3; width: 100%; overflow-x: auto; gap: 0 !important; }
+    [data-m~="hide"] { display: none !important; }
+  }
+  @container pg (max-width: 760px) {
+    [data-m~="pad"] { padding: 56px 20px !important; }
+    [data-m~="padx"] { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    [data-m~="grid2"] { grid-template-columns: 1fr !important; }
+    [data-m~="h2"] { font-size: 28px !important; margin-bottom: 32px !important; }
+    [data-m~="hdr"] { height: auto !important; padding: 12px 20px !important; flex-wrap: wrap !important; gap: 10px !important; }
+    [data-m~="hdrnav"] { order: 3; width: 100%; overflow-x: auto; gap: 0 !important; }
+    [data-m~="hide"] { display: none !important; }
+  }
+
+  [data-m~="burger"] span[data-l] { transition: transform .3s ease, opacity .3s ease; }
+  [data-m~="burger"][data-open="true"] span[data-l="1"] { transform: translateY(5.5px) rotate(45deg); }
+  [data-m~="burger"][data-open="true"] span[data-l="2"] { opacity: 0; }
+  [data-m~="burger"][data-open="true"] span[data-l="3"] { transform: translateY(-5.5px) rotate(-45deg); }
+  @media (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+  @container pg (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+  @media (max-width: 1080px) { [data-m~="prevlink"][data-m~="hide"] { display: none !important; } }
+  @container pg (max-width: 1080px) { [data-m~="prevlink"][data-m~="hide"] { display: none !important; } }
+</style>
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 74px; }
+  a:hover { color: #b14e49; }
+  footer a:hover, [data-m~="prevlink"]:hover { background: #b14e49; color: #fff !important; border-color: #b14e49; }
+  input:focus, textarea:focus { border-color: #b14e49; outline: none; }
+  button[type="submit"]:hover { background: #933331; }
+  #mk-burger:hover { border-color: #b14e49; }
+  @media (max-width: 940px) {
+    [data-m~="hdr"] { height: auto !important; padding: 12px 20px !important; }
+    [data-m~="hdrnav"] { flex-wrap: wrap; justify-content: flex-end; row-gap: 6px !important; }
+  }
+  @container pg (max-width: 940px) {
+    [data-m~="hdr"] { height: auto !important; padding: 12px 20px !important; }
+    [data-m~="hdrnav"] { flex-wrap: wrap; justify-content: flex-end; row-gap: 6px !important; }
+  }
+
+
+
+  [data-m~="burger"] span[data-l] { transition: transform .3s ease, opacity .3s ease; }
+  [data-m~="burger"][data-open="true"] span[data-l="1"] { transform: translateY(5.5px) rotate(45deg); }
+  [data-m~="burger"][data-open="true"] span[data-l="2"] { opacity: 0; }
+  [data-m~="burger"][data-open="true"] span[data-l="3"] { transform: translateY(-5.5px) rotate(-45deg); }
+  @media (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+  @container pg (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+</style>
+</head>
+<body>
+<div style="--acc: #b14e49; container-type:inline-size; container-name:pg; min-height:100vh; background:#f8f2eb; color:#241c18; font-family:'Karla',sans-serif; -webkit-font-smoothing:antialiased; position:relative;">
+  
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(248,242,235,.92); backdrop-filter:blur(12px); border-bottom:1px solid #d5ccc1;">
+    <div style="max-width:1240px; margin:0 auto; padding:0 40px; height:74px; display:flex; align-items:center; justify-content:space-between; gap:24px;" data-m="hdr">
+      <a href="index.html" style="cursor:pointer; display:flex; align-items:baseline; gap:12px;">
+        <span style="font-family:'EB Garamond',serif; font-weight:500; font-size:22px; line-height:1.2; letter-spacing:-.005em;">MARNIK</span>
+        <span style="font-family:'Fira Mono',monospace; font-size:10px; color:#7e7269; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;" data-m="hide">est. 1992 · Beograd</span>
+      </a>
+      <a href="pregled-reference.html" data-m="prevlink hide" style="cursor:pointer; white-space:nowrap; font-family:'Fira Mono',monospace; font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; padding:8px 12px; color:#b14e49; border:1px solid #b14e49; flex:none;">Pregled sa fotografijama</a>
+      <nav style="display:flex; align-items:center; gap:4px;" data-m="hdrnav">
+        <a href="index.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#7e7269;">Naslovna</a>
+        <a href="index.html#sec-about" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#7e7269;">O nama</a>
+        <a href="reference.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#241c18;">Reference</a>
+        <a href="index.html#sec-team" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#7e7269;">Tim</a>
+        <a href="index.html#sec-contact" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#7e7269;">Kontakt</a>
+      </nav>
+      <button type="button" id="mk-burger" aria-label="Meni" data-m="burger" data-open="false" style="display:none; align-items:center; gap:10px; background:transparent; border:1px solid #d5ccc1; padding:10px 14px; cursor:pointer; font-family:'Fira Mono',monospace; font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:#241c18; min-height:44px;">
+        <span style="display:flex; flex-direction:column; gap:4px;">
+          <span data-l="1" style="display:block; width:18px; height:1.5px; background:#241c18;"></span>
+          <span data-l="2" style="display:block; width:18px; height:1.5px; background:#241c18;"></span>
+          <span data-l="3" style="display:block; width:18px; height:1.5px; background:#241c18;"></span>
+        </span>
+        <span>Meni</span>
+      </button>
+    </div>
+    <div id="mk-menu" style="display:none; flex-direction:column;">
+      <nav style="border-top:1px solid #d5ccc1; background:#f8f2eb; display:flex; flex-direction:column;">
+        <a href="index.html" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#5e534b; border-bottom:1px solid #e4ddd4;">Naslovna</a>
+        <a href="index.html#sec-about" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#5e534b; border-bottom:1px solid #e4ddd4;">O nama</a>
+        <a href="#sec-references" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:600; color:#241c18; border-bottom:1px solid #e4ddd4;">Reference</a>
+        <a href="index.html#sec-team" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#5e534b; border-bottom:1px solid #e4ddd4;">Tim</a>
+        <a href="index.html#sec-contact" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#5e534b;">Kontakt</a>
+        <a href="pregled-reference.html" style="cursor:pointer; padding:16px 20px; font-family:'Fira Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#b14e49;">Pregled sa fotografijama</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="position:relative; z-index:1;">
+    <section id="sec-references" data-m="pad" style="max-width:1240px; margin:0 auto; padding:96px 40px;">
+      <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px;">Reference</div>
+      <h2 data-m="h2" style="font-family:'EB Garamond',serif; font-weight:500; font-size:44px; line-height:1.06; letter-spacing:-.015em; margin:0 0 56px;">Realizovani projekti</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;" data-m="grid2">
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">FK Beograd - Karaburma</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni kompleks · 16.000 m²</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Ustanička 84b</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat · 2.413 m²</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1624204386084-dd8c05e32226?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Kneza Danila 55</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1580216643062-cf460548a66a?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 43</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1655324330925-d9b9b20e862b?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 47</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1516501312919-d0cb0b7b60b8?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 51</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1527465094057-db061fdbfaf7?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 29</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1763441344610-9c0946421fb2?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 53-55</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1616531494852-24870860fb40?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Dobrnjca 15</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1587217997266-ee29a5788770?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Dimitrija Tucovića 146</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1624310866889-db8aa08b3771?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Dimitrija Tucovića 148-150</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1646082525085-f79271abdbe1?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Sredačka 3</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1522279549323-cf42d7c560a9?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Svetozara Markovića 48</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1598604517727-8bb606570274?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Đevđelijska 7</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><img src="https://images.unsplash.com/photo-1713496131794-e52fb9fe4ee2?auto=format&amp;fit=crop&amp;w=900&amp;h=600&amp;q=70" alt="Ilustrativna fotografija objekta" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Đuke Dinića 17</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="position:relative; z-index:1; border-top:1px solid #241c18; background:#f8f2eb; margin-top:40px;">
+    <div style="max-width:1240px; margin:0 auto; padding:56px 40px; display:grid; grid-template-columns:2fr 1fr 1fr; gap:40px;" data-m="pad col">
+      <div>
+        <a href="index.html" style="cursor:pointer; display:inline-block; font-weight:800; font-size:20px; letter-spacing:.22em; margin-bottom:14px;">MARNIK</a>
+        <p style="font-size:14px; line-height:1.6; color:#7e7269; max-width:26em; margin:0;">Projektni biro iz Beograda osnovan 1992. godine.<br>Idejna rešenja i kompletna tehnička dokumentacija za građevinsku i upotrebnu dozvolu</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#5e534b;">
+        <a href="index.html" style="cursor:pointer;">Naslovna</a>
+        <a href="index.html#sec-about" style="cursor:pointer;">O nama</a>
+        <a href="reference.html" style="cursor:pointer;">Reference</a>
+        <a href="index.html#sec-team" style="cursor:pointer;">Tim</a>
+        <a href="index.html#sec-services" style="cursor:pointer;">Usluge</a>
+        <a href="index.html#sec-contact" style="cursor:pointer;">Kontakt</a>
+      </div>
+      <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; line-height:1.9;">
+        Kondina 1a<br>11000 Beograd<br>+381 11 3226 509<br>marnik.biro@gmail.com
+      </div>
+    </div>
+    <div style="border-top:1px solid #e4ddd4;">
+      <div style="max-width:1240px; margin:0 auto; padding:20px 40px; font-family:'Fira Mono',monospace; font-size:12px; color:#958a81; letter-spacing:.03em; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;" data-m="padx">
+        <span>© 2026 MARNIK d.o.o. Beograd</span>
+        <span>PIB 100120368 · MB 07812868</span>
+        <a href="pregled-reference.html" style="color:#b14e49; text-decoration:none; border:1px solid #b14e49; padding:6px 12px; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;">Radni pregled sa fotografijama →</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="i18n.js"></script>
+<script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var EASE = 'cubic-bezier(.22,.61,.36,1)';
+    var pending = [];
+
+    function container(sec) {
+      var c = sec, i = 0;
+      while (i < 2 && c.children.length === 1 && c.firstElementChild.tagName === 'DIV') { c = c.firstElementChild; i++; }
+      return c;
+    }
+    function visible(el, ratio) {
+      var r = el.getBoundingClientRect();
+      var h = window.innerHeight || document.documentElement.clientHeight;
+      return r.top < h * (ratio || 0.92) && r.bottom > 0;
+    }
+    function add(el, run, ratio) { pending.push({ el: el, run: run, ratio: ratio, done: false }); }
+    function tick() {
+      var live = false;
+      for (var i = 0; i < pending.length; i++) {
+        var g = pending[i];
+        if (g.done) continue;
+        if (visible(g.el, g.ratio)) { g.done = true; g.run(); } else live = true;
+      }
+      return live;
+    }
+    function watch() {
+      var t0 = Date.now();
+      var iv = setInterval(function () {
+        if (!tick() || Date.now() - t0 > 45000) {
+          clearInterval(iv);
+          pending.forEach(function (g) { if (!g.done) { g.done = true; g.run(); } });
+        }
+      }, 150);
+      document.addEventListener('scroll', tick, true);
+      window.addEventListener('resize', tick);
+      tick();
+    }
+
+    function hide(el, dy) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(' + dy + 'px)';
+      el.style.transition = 'opacity .75s ' + EASE + ', transform .75s ' + EASE;
+    }
+    function show(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      setTimeout(function () { el.style.transform = ''; el.style.transition = ''; }, 900);
+    }
+    function group(list, step, dy) {
+      list.forEach(function (el) { hide(el, dy); });
+      return function () {
+        list.forEach(function (el, i) { setTimeout(function () { show(el); }, i * step); });
+      };
+    }
+
+    function words(h) {
+      var nodes = Array.prototype.slice.call(h.childNodes), out = [];
+      h.textContent = '';
+      nodes.forEach(function (n) {
+        if (n.nodeType === 3) {
+          n.textContent.split(/(\s+)/).forEach(function (w) {
+            if (!w) return;
+            if (/^\s+$/.test(w)) { h.appendChild(document.createTextNode(' ')); return; }
+            var sp = document.createElement('span');
+            sp.textContent = w;
+            sp.style.display = 'inline-block';
+            out.push(sp);
+            h.appendChild(sp);
+          });
+        } else { h.appendChild(n); }
+      });
+      return out;
+    }
+
+    function sections() {
+      var out = [];
+      Array.prototype.forEach.call(document.querySelectorAll('main > section'), function (s) {
+        if (s.getAttribute('data-m') && /herosec/.test(s.getAttribute('data-m'))) return;
+        if (s.querySelector('[data-m~="grid4"]')) return;
+        out.push(s);
+      });
+      return out;
+    }
+
+    function reveal() {
+      sections().forEach(function (sec) {
+        var kids = Array.prototype.slice.call(container(sec).children);
+        if (!kids.length) return;
+        var seq = [];
+        kids.forEach(function (kid) {
+          var cards = Array.prototype.slice.call(kid.querySelectorAll(':scope > [data-m~="svc"], :scope > [data-m~="proj"]'));
+          if (cards.length > 1) { seq.push({ list: cards, step: 110, dy: 24 }); return; }
+          if (kid.tagName === 'H2') { seq.push({ list: words(kid), step: 55, dy: 16 }); return; }
+          seq.push({ list: [kid], step: 0, dy: 28 });
+        });
+        var runs = seq.map(function (g) { return group(g.list, g.step, g.dy); });
+        add(sec, function () {
+          var d = 0;
+          runs.forEach(function (run, i) {
+            setTimeout(run, d);
+            d += seq[i].list.length > 1 ? 130 : 170;
+          });
+        });
+      });
+    }
+
+    function zooms() {
+      Array.prototype.forEach.call(document.querySelectorAll('[style*="aspect-ratio"]'), function (w) {
+        if (w.closest('[data-m~="herosec"]')) return;
+        var m = w.getAttribute('data-m') || '';
+        if (/csq/.test(m)) return;
+        if (!w.querySelector('image-slot, .mk-slot, [style*="dashed"]')) return;
+        var inner = w.firstElementChild;
+        if (!inner) return;
+        w.style.overflow = 'hidden';
+        inner.style.transform = 'scale(1.06)';
+        inner.style.transition = 'transform 1.2s ' + EASE;
+        add(w, function () {
+          inner.style.transform = 'scale(1)';
+          setTimeout(function () { inner.style.transition = ''; inner.style.transform = ''; }, 1300);
+        }, 0.96);
+      });
+    }
+
+    function parallax() {
+      var sec = document.querySelector('[data-m~="herosec"]');
+      if (!sec) return;
+      var bg = sec.firstElementChild;
+      if (!bg) return;
+      var AMT = 0.15;
+      bg.style.top = (-AMT * 100) + '%';
+      bg.style.bottom = 'auto';
+      bg.style.height = ((1 + AMT) * 100) + '%';
+      bg.style.willChange = 'transform';
+      var queued = false;
+      function frame() {
+        queued = false;
+        var r = sec.getBoundingClientRect();
+        var p = Math.min(1, Math.max(0, -r.top / (r.height || 1)));
+        bg.style.transform = 'translate3d(0,' + (p * AMT * r.height).toFixed(1) + 'px,0)';
+      }
+      function onScroll() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
+      document.addEventListener('scroll', onScroll, true);
+      window.addEventListener('resize', onScroll);
+      frame();
+    }
+
+    function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+    function counters() {
+      var wrap = document.querySelector('[data-m~="grid4"]');
+      if (!wrap) return;
+      var items = [];
+      Array.prototype.forEach.call(wrap.querySelectorAll('[data-m~="stat"]'), function (cell) {
+        var el = cell.firstElementChild;
+        if (!el) return;
+        var txt = el.textContent;
+        var digits = txt.replace(/[^0-9]/g, '');
+        if (!digits) return;
+        var line = document.createElement('div');
+        line.style.cssText = 'height:2px; width:0; margin:12px auto 0; background:var(--acc,#b14e49); transition:width 1.3s ' + EASE + ';';
+        cell.insertBefore(line, el.nextSibling);
+        items.push({ el: el, line: line, target: parseInt(digits, 10), suffix: txt.slice(txt.search(/[0-9]/)).replace(/[0-9.]/g, ''), done: txt });
+      });
+      if (!items.length) return;
+      if (reduce) { items.forEach(function (it) { it.line.style.width = '46px'; }); return; }
+      items.forEach(function (it) { it.el.textContent = '0' + it.suffix; });
+      add(wrap, function () {
+        items.forEach(function (it) { it.line.style.width = '46px'; });
+        var t0 = performance.now(), dur = 1300;
+        function step(now) {
+          var p = Math.min(1, Math.max(0, (now - t0) / dur));
+          var k = 1 - Math.pow(1 - p, 3);
+          items.forEach(function (it) { it.el.textContent = (p < 1 ? fmt(Math.round(it.target * k)) + it.suffix : it.done); });
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }, 0.6);
+    }
+
+    if (!reduce) { reveal(); zooms(); parallax(); }
+    counters();
+    if (pending.length) watch();
+  })();
+</script>
+
+<script>
+(function () {
+  var b = document.getElementById('mk-burger'), m = document.getElementById('mk-menu');
+  if (!b || !m) return;
+  b.addEventListener('click', function () {
+    var open = m.style.display !== 'none';
+    m.style.display = open ? 'none' : 'flex';
+    b.setAttribute('data-open', open ? 'false' : 'true');
+    b.lastElementChild.textContent = open ? 'Meni' : 'Zatvori';
+  });
+  m.addEventListener('click', function (e) {
+    if (e.target.closest('a')) { m.style.display = 'none'; b.setAttribute('data-open', 'false'); b.lastElementChild.textContent = 'Meni'; }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Radni pregled - Reference - MARNIK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Karla:wght@400;500;600;700&amp;family=Fira+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: #b14e49; color: #fff; }
+  [data-m~="svc"], [data-m~="proj"] { transition: transform .3s cubic-bezier(.22,.61,.36,1), border-color .3s, box-shadow .3s; }
+  [data-m~="svc"]:hover { transform: translateY(-4px); position: relative; z-index: 2; box-shadow: inset 0 0 0 1px var(--acc,#b14e49), 0 14px 30px rgba(36,28,24,.14); }
+  [data-m~="proj"]:hover { transform: translateY(-4px); position: relative; z-index: 2; border-color: var(--acc,#b14e49); box-shadow: 0 14px 30px rgba(36,28,24,.14); }
+  [data-m~="hdrnav"] > a { position: relative; transition: color .3s; }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"])::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px; height: 2px; background: #b14e49; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"]):hover::after { transform: scaleX(1); }
+  [data-m~="hdrnav"] > a:not([data-m~="prevlink"]):hover { color: #241c18; }
+  image-slot { display:block; width:100%; height:100%; }
+  @media (max-width: 760px) {
+    [data-m~="pad"] { padding: 56px 20px !important; }
+    [data-m~="padx"] { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    [data-m~="grid2"] { grid-template-columns: 1fr !important; }
+    [data-m~="h2"] { font-size: 28px !important; margin-bottom: 32px !important; }
+    [data-m~="hdr"] { height: auto !important; padding: 12px 20px !important; flex-wrap: wrap !important; gap: 10px !important; }
+    [data-m~="hdrnav"] { order: 3; width: 100%; overflow-x: auto; gap: 0 !important; }
+    [data-m~="hide"] { display: none !important; }
+  }
+  @container pg (max-width: 760px) {
+    [data-m~="pad"] { padding: 56px 20px !important; }
+    [data-m~="padx"] { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-m~="col"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    [data-m~="grid2"] { grid-template-columns: 1fr !important; }
+    [data-m~="h2"] { font-size: 28px !important; margin-bottom: 32px !important; }
+    [data-m~="hdr"] { height: auto !important; padding: 12px 20px !important; flex-wrap: wrap !important; gap: 10px !important; }
+    [data-m~="hdrnav"] { order: 3; width: 100%; overflow-x: auto; gap: 0 !important; }
+    [data-m~="hide"] { display: none !important; }
+  }
+
+  [data-m~="burger"] span[data-l] { transition: transform .3s ease, opacity .3s ease; }
+  [data-m~="burger"][data-open="true"] span[data-l="1"] { transform: translateY(5.5px) rotate(45deg); }
+  [data-m~="burger"][data-open="true"] span[data-l="2"] { opacity: 0; }
+  [data-m~="burger"][data-open="true"] span[data-l="3"] { transform: translateY(-5.5px) rotate(-45deg); }
+  @media (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+  @container pg (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+</style>
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 74px; }
+  a:hover { color: #b14e49; }
+  #mk-burger:hover { border-color: #b14e49; }
+  #mk-reset:hover { border-color: #d78e88; }
+  .mk-slot { position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; box-sizing:border-box; padding:10px; background:#eee9de; border:1px dashed #c3bdb2; background-size:cover; background-position:center; cursor:pointer; transition:border-color .15s, background-color .15s; }
+  .mk-slot:hover, .mk-slot:focus { border-color:#b14e49; outline:none; }
+  .mk-slot.mk-over { border-color:#b14e49; border-style:solid; background-color:#f5d6d2; }
+  .mk-slot-txt { font-family:'Fira Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#a1968c; text-align:center; line-height:1.5; pointer-events:none; }
+  .mk-slot.mk-has .mk-slot-txt { display:none; }
+  .mk-slot-x { display:none; z-index:2; position:absolute; top:8px; right:8px; width:26px; height:26px; padding:0; background:rgba(36,28,24,.82); color:#fff; border:none; font-size:16px; line-height:1; cursor:pointer; }
+  .mk-slot.mk-has .mk-slot-x { display:block; }
+  .mk-slot-x:hover { background:#b14e49; }
+  #mk-exit:hover { background:#933331; border-color:#933331; }
+
+  [data-m~="burger"] span[data-l] { transition: transform .3s ease, opacity .3s ease; }
+  [data-m~="burger"][data-open="true"] span[data-l="1"] { transform: translateY(5.5px) rotate(45deg); }
+  [data-m~="burger"][data-open="true"] span[data-l="2"] { opacity: 0; }
+  [data-m~="burger"][data-open="true"] span[data-l="3"] { transform: translateY(-5.5px) rotate(-45deg); }
+  @media (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+  @container pg (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+</style>
+</head>
+<body>
+<div style="background:#241c18; color:#f8f2eb; font-family:'Fira Mono',monospace; font-size:12px; letter-spacing:.04em; line-height:1.6; padding:14px 20px; display:flex; gap:20px; align-items:center; justify-content:center; flex-wrap:wrap; text-align:center;">
+  <span style="color:#d78e88;">RADNI PREGLED</span>
+  <span style="max-width:52em;">Kliknite ili prevucite fotografiju na bilo koje sivo polje da vidite kako sajt izgleda sa slikama. Slike se čuvaju samo u vašem pretraživaču - niko drugi ih ne vidi.</span>
+  <button type="button" id="mk-reset" style="background:none; color:#f8f2eb; border:1px solid #5e534b; padding:7px 14px; font-family:'Fira Mono',monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; cursor:pointer;">Obriši sve slike</button>
+  <button type="button" id="mk-exit" style="background:#b14e49; color:#fff; border:1px solid #b14e49; padding:7px 14px; font-family:'Fira Mono',monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; white-space:nowrap;">Nazad na sajt →</button>
+</div>
+
+<div style="--acc: #b14e49; container-type:inline-size; container-name:pg; min-height:100vh; background:#f8f2eb; color:#241c18; font-family:'Karla',sans-serif; -webkit-font-smoothing:antialiased; position:relative;">
+  
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(248,242,235,.92); backdrop-filter:blur(12px); border-bottom:1px solid #d5ccc1;">
+    <div style="max-width:1240px; margin:0 auto; padding:0 40px; height:74px; display:flex; align-items:center; justify-content:space-between; gap:24px;" data-m="hdr">
+      <a href="pregled.html" style="cursor:pointer; display:flex; align-items:baseline; gap:12px;">
+        <span style="font-family:'EB Garamond',serif; font-weight:500; font-size:22px; line-height:1.2; letter-spacing:-.005em;">MARNIK</span>
+        <span style="font-family:'Fira Mono',monospace; font-size:10px; color:#7e7269; letter-spacing:.08em; text-transform:uppercase;" data-m="hide">est. 1992 · Beograd</span>
+      </a>
+      <nav style="display:flex; align-items:center; gap:4px;" data-m="hdrnav">
+        <a href="pregled.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#7e7269;">Naslovna</a>
+        <a href="pregled.html#sec-about" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#7e7269;">O nama</a>
+        <a href="pregled-reference.html" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#241c18;">Reference</a>
+        <a href="pregled.html#sec-team" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#7e7269;">Tim</a>
+        <a href="pregled.html#sec-contact" style="cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; padding:8px 14px; color:#7e7269;">Kontakt</a>
+      </nav>
+      <button type="button" id="mk-burger" aria-label="Meni" data-m="burger" data-open="false" style="display:none; align-items:center; gap:10px; background:transparent; border:1px solid #d5ccc1; padding:10px 14px; cursor:pointer; font-family:'Fira Mono',monospace; font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:#241c18; min-height:44px;">
+        <span style="display:flex; flex-direction:column; gap:4px;">
+          <span data-l="1" style="display:block; width:18px; height:1.5px; background:#241c18;"></span>
+          <span data-l="2" style="display:block; width:18px; height:1.5px; background:#241c18;"></span>
+          <span data-l="3" style="display:block; width:18px; height:1.5px; background:#241c18;"></span>
+        </span>
+        <span>Meni</span>
+      </button>
+    </div>
+    <div id="mk-menu" style="display:none; flex-direction:column;">
+      <nav style="border-top:1px solid #d5ccc1; background:#f8f2eb; display:flex; flex-direction:column;">
+        <a href="index.html" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#5e534b; border-bottom:1px solid #e4ddd4;">Naslovna</a>
+        <a href="index.html#sec-about" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#5e534b; border-bottom:1px solid #e4ddd4;">O nama</a>
+        <a href="#sec-references" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:600; color:#241c18; border-bottom:1px solid #e4ddd4;">Reference</a>
+        <a href="index.html#sec-team" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#5e534b; border-bottom:1px solid #e4ddd4;">Tim</a>
+        <a href="index.html#sec-contact" style="cursor:pointer; padding:16px 20px; font-size:16px; font-weight:500; color:#5e534b;">Kontakt</a>
+        <a href="reference.html" style="cursor:pointer; padding:16px 20px; font-family:'Fira Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#b14e49;">Statična verzija</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="position:relative; z-index:1;">
+    <section id="sec-references" data-m="pad" style="max-width:1240px; margin:0 auto; padding:96px 40px;">
+      <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px;">Reference</div>
+      <h2 data-m="h2" style="font-family:'EB Garamond',serif; font-weight:500; font-size:44px; line-height:1.06; letter-spacing:-.015em; margin:0 0 56px;">Realizovani projekti</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;" data-m="grid2">
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-0" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">FK Beograd - Karaburma</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni kompleks · 16.000 m²</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-13" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Ustanička 84b</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat · 2.413 m²</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-14" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Kneza Danila 55</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-1" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 43</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-2" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 47</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-3" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 51</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-4" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 29</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-5" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Šupljikca 53-55</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-6" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Vojvode Dobrnjca 15</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-7" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Dimitrija Tucovića 146</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-8" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Dimitrija Tucovića 148-150</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-9" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Sredačka 3</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-10" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Svetozara Markovića 48</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-11" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Đevđelijska 7</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+        <div data-m="proj" style="background:#f8f2eb; border:1px solid #d5ccc1;">
+          <div style="aspect-ratio:3/2;"><div class="mk-slot" data-slot="proj-12" data-ph="Foto objekta" tabindex="0" role="button" aria-label="Ubacite fotografiju: Foto objekta"><span class="mk-slot-txt">Foto objekta</span><button type="button" class="mk-slot-x" aria-label="Ukloni fotografiju">&times;</button></div></div>
+          <div style="padding:20px 22px;">
+            <div style="font-weight:600; font-size:16px;">Đuke Dinića 17</div>
+            <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.03em; margin-top:6px;">Stambeno-poslovni objekat</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="position:relative; z-index:1; border-top:1px solid #241c18; background:#f8f2eb; margin-top:40px;">
+    <div style="max-width:1240px; margin:0 auto; padding:56px 40px; display:grid; grid-template-columns:2fr 1fr 1fr; gap:40px;" data-m="pad col">
+      <div>
+        <a href="pregled.html" style="cursor:pointer; display:inline-block; font-weight:800; font-size:20px; letter-spacing:.22em; margin-bottom:14px;">MARNIK</a>
+        <p style="font-size:14px; line-height:1.6; color:#7e7269; max-width:26em; margin:0;">Projektni biro iz Beograda osnovan 1992. godine.<br>Idejna rešenja i kompletna tehnička dokumentacija za građevinsku i upotrebnu dozvolu</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#5e534b;">
+        <a href="pregled.html" style="cursor:pointer;">Naslovna</a>
+        <a href="pregled.html#sec-about" style="cursor:pointer;">O nama</a>
+        <a href="pregled-reference.html" style="cursor:pointer;">Reference</a>
+        <a href="pregled.html#sec-team" style="cursor:pointer;">Tim</a>
+        <a href="pregled.html#sec-services" style="cursor:pointer;">Usluge</a>
+        <a href="pregled.html#sec-contact" style="cursor:pointer;">Kontakt</a>
+      </div>
+      <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; line-height:1.9;">
+        Kondina 1a<br>11000 Beograd<br>+381 11 3226 509<br>marnik.biro@gmail.com
+      </div>
+    </div>
+    <div style="border-top:1px solid #e4ddd4;">
+      <div style="max-width:1240px; margin:0 auto; padding:20px 40px; font-family:'Fira Mono',monospace; font-size:12px; color:#958a81; letter-spacing:.03em; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;" data-m="padx">
+        <span>© 2026 MARNIK d.o.o. Beograd</span>
+        <span>PIB 100120368 · MB 07812868</span>
+      </div>
+    </div>
+  </footer>
+</div>
+<div id="mk-panel" style="position:fixed; right:18px; bottom:18px; z-index:9999; width:298px; max-height:calc(100vh - 36px); display:flex; flex-direction:column; background:#ffffff; border:1px solid #d5ccc1; box-shadow:0 18px 40px rgba(36,28,24,.18); font-family:'Fira Mono',monospace; color:#241c18;">
+  <button type="button" id="mk-panel-t" style="width:100%; flex:none; display:flex; align-items:center; justify-content:space-between; gap:10px; background:#241c18; color:#f8f2eb; border:none; padding:11px 14px; font-family:inherit; font-size:11px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer;">
+    <span>Izgled sajta</span><span id="mk-panel-c" style="font-size:13px;">+</span>
+  </button>
+  <div id="mk-panel-b" style="padding:16px 14px 14px; display:none; flex-direction:column; gap:14px; overflow-y:auto; min-height:0;">
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; gap:0;">
+        <button type="button" class="mk-ch" data-ch="text" style="flex:1; display:flex; align-items:center; justify-content:center; gap:5px; background:#241c18; color:#fff; border:1px solid #241c18; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;"><span class="mk-dot" style="width:9px; height:9px; border:1px solid rgba(255,255,255,.5);"></span>Tekst</button>
+        <button type="button" class="mk-ch" data-ch="bg" style="flex:1; display:flex; align-items:center; justify-content:center; gap:5px; background:#fff; color:#5e534b; border:1px solid #d5ccc1; border-left:none; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;"><span class="mk-dot" style="width:9px; height:9px; border:1px solid #d5ccc1;"></span>Pozadina</button>
+        <button type="button" class="mk-ch" data-ch="btn" style="flex:1; display:flex; align-items:center; justify-content:center; gap:5px; background:#fff; color:#5e534b; border:1px solid #d5ccc1; border-left:none; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;"><span class="mk-dot" style="width:9px; height:9px; border:1px solid #d5ccc1;"></span>Dugmići</button>
+      </div>
+      <div id="mk-sv" style="position:relative; width:100%; height:108px; border:1px solid #d5ccc1; cursor:crosshair; touch-action:none;">
+        <div id="mk-sv-h" style="position:absolute; width:14px; height:14px; margin:-7px 0 0 -7px; border:2px solid #fff; border-radius:50%; box-shadow:0 0 0 1px rgba(36,28,24,.55); pointer-events:none;"></div>
+      </div>
+      <div id="mk-hue" style="position:relative; width:100%; height:14px; border:1px solid #d5ccc1; cursor:ew-resize; touch-action:none; background:linear-gradient(to right,#f00 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,#f00 100%);">
+        <div id="mk-hue-h" style="position:absolute; top:-3px; width:6px; height:18px; margin-left:-3px; background:#fff; border:1px solid rgba(36,28,24,.55); pointer-events:none;"></div>
+      </div>
+      <div id="mk-fields" style="display:flex; gap:6px;"></div>
+      <div style="display:flex; gap:0;">
+        <button type="button" class="mk-fmt" data-fmt="hex" style="flex:1; background:#241c18; color:#fff; border:1px solid #241c18; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Hex</button>
+        <button type="button" class="mk-fmt" data-fmt="rgb" style="flex:1; background:#fff; color:#5e534b; border:1px solid #d5ccc1; border-left:none; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Rgb</button>
+        <button type="button" class="mk-fmt" data-fmt="hsl" style="flex:1; background:#fff; color:#5e534b; border:1px solid #d5ccc1; border-left:none; padding:6px 0; font-family:inherit; font-size:10px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Hsl</button>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button type="button" id="mk-c-go" style="flex:1; background:#241c18; color:#fff; border:1px solid #241c18; padding:8px 10px; font-family:inherit; font-size:11px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">Primeni boje</button>
+        <button type="button" id="mk-c-undo" style="flex:1; background:none; color:#5e534b; border:1px solid #d5ccc1; padding:8px 10px; font-family:inherit; font-size:11px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">Poništi izbor</button>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e4ddd4; padding-top:13px; display:flex; flex-direction:column; gap:9px;">
+      <span style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#5e534b;">Font</span>
+      <select id="mk-f-sel" style="width:100%; padding:7px 8px; border:1px solid #d5ccc1; background:#fff; font-family:inherit; font-size:12px; color:#241c18;">
+        <option value="Karla">Karla (podrazumevani)</option>
+        <option value="Manrope">Manrope</option>
+        <option value="Work Sans">Work Sans</option>
+        <option value="Source Serif 4">Source Serif 4</option>
+        <option value="Playfair Display">Playfair Display</option>
+        <option value="Space Grotesk">Space Grotesk</option>
+      </select>
+      <input type="text" id="mk-f-own" placeholder="Naziv fonta ili Google Fonts link" style="width:100%; box-sizing:border-box; padding:7px 8px; border:1px solid #d5ccc1; background:#fff; font-family:inherit; font-size:11px; color:#241c18;">
+      <div style="display:flex; gap:8px;">
+        <button type="button" id="mk-f-go" style="flex:1; background:#241c18; color:#fff; border:1px solid #241c18; padding:8px 10px; font-family:inherit; font-size:11px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">Primeni font</button>
+        <button type="button" id="mk-f-undo" style="flex:1; background:none; color:#5e534b; border:1px solid #d5ccc1; padding:8px 10px; font-family:inherit; font-size:11px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;">Poništi izbor</button>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e4ddd4; padding-top:13px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+      <button type="button" id="mk-th-reset" style="background:none; color:#5e534b; border:1px solid #d5ccc1; padding:8px 12px; font-family:inherit; font-size:11px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Početne vrednosti</button>
+      <span style="font-size:10px; line-height:1.5; color:#a1968c; text-align:right;">Važi samo<br>u ovom pregledu</span>
+    </div>
+  </div>
+</div>
+<script src="i18n.js"></script>
+<script>
+(function () {
+  var b = document.getElementById('mk-burger'), m = document.getElementById('mk-menu');
+  if (b && m) {
+    b.addEventListener('click', function () {
+      var open = m.style.display !== 'none';
+      m.style.display = open ? 'none' : 'flex';
+      b.lastElementChild.textContent = open ? 'Meni' : 'Zatvori';
+    });
+    m.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { m.style.display = 'none'; b.lastElementChild.textContent = 'Meni'; }
+    });
+  }
+  var KEY = 'mk-photo:';
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.style.display = 'none';
+  document.body.appendChild(input);
+  var target = null;
+
+  function paint(slot, url) {
+    if (url) { slot.style.backgroundImage = 'url("' + url + '")'; slot.classList.add('mk-has'); }
+    else { slot.style.backgroundImage = ''; slot.classList.remove('mk-has'); }
+  }
+  function store(slot, url) {
+    try { localStorage.setItem(KEY + slot.dataset.slot, url); }
+    catch (e) { window.alert('Nema više mesta za čuvanje slika u pretraživaču. Slika je prikazana, ali se neće pamtiti posle osvežavanja.'); }
+  }
+  function shrink(file, done) {
+    var fr = new FileReader();
+    fr.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var max = 1600, w = img.width, h = img.height;
+        var k = Math.min(1, max / Math.max(w, h));
+        var c = document.createElement('canvas');
+        c.width = Math.round(w * k); c.height = Math.round(h * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        try { done(c.toDataURL('image/jpeg', 0.82)); } catch (e) { done(fr.result); }
+      };
+      img.onerror = function () { done(fr.result); };
+      img.src = fr.result;
+    };
+    fr.readAsDataURL(file);
+  }
+  function accept(slot, file) {
+    if (!file || file.type.indexOf('image/') !== 0) return;
+    shrink(file, function (url) { paint(slot, url); store(slot, url); });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.mk-slot'), function (slot) {
+    var saved = null;
+    try { saved = localStorage.getItem(KEY + slot.dataset.slot); } catch (e) {}
+    if (saved) paint(slot, saved);
+
+    slot.addEventListener('click', function (e) {
+      if (e.target.classList.contains('mk-slot-x')) return;
+      target = slot; input.value = ''; input.click();
+    });
+    slot.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); target = slot; input.value = ''; input.click(); }
+    });
+    ['dragenter', 'dragover'].forEach(function (t) {
+      slot.addEventListener(t, function (e) { e.preventDefault(); slot.classList.add('mk-over'); });
+    });
+    ['dragleave', 'dragend'].forEach(function (t) {
+      slot.addEventListener(t, function () { slot.classList.remove('mk-over'); });
+    });
+    slot.addEventListener('drop', function (e) {
+      e.preventDefault();
+      slot.classList.remove('mk-over');
+      accept(slot, e.dataTransfer.files && e.dataTransfer.files[0]);
+    });
+    slot.querySelector('.mk-slot-x').addEventListener('click', function (e) {
+      e.stopPropagation();
+      paint(slot, null);
+      try { localStorage.removeItem(KEY + slot.dataset.slot); } catch (err) {}
+    });
+  });
+
+  input.addEventListener('change', function () {
+    if (target) accept(target, input.files && input.files[0]);
+    target = null;
+  });
+
+  window.addEventListener('dragover', function (e) { e.preventDefault(); });
+  window.addEventListener('drop', function (e) { e.preventDefault(); });
+
+  var x = document.getElementById('mk-exit');
+  if (x) x.addEventListener('click', function () {
+    Object.keys(localStorage).filter(function (k) { return k.indexOf(KEY) === 0; }).forEach(function (k) { localStorage.removeItem(k); });
+    try { localStorage.removeItem('mk-theme'); } catch (err) {}
+    window.location.href = 'reference.html';
+  });
+
+  var r = document.getElementById('mk-reset');
+  if (r) r.addEventListener('click', function () {
+    if (!window.confirm('Obrisati sve ubacene fotografije sa ovog pregleda?')) return;
+    Object.keys(localStorage).filter(function (k) { return k.indexOf(KEY) === 0; }).forEach(function (k) { localStorage.removeItem(k); });
+    Array.prototype.forEach.call(document.querySelectorAll('.mk-slot'), function (slot) { paint(slot, null); });
+  });
+})();
+
+  (function () {
+    var TKEY = 'mk-theme';
+    var DEF = { text: '#241c18', bg: '#f8f2eb', btn: '#b14e49', font: '', fontUrl: '' };
+    var scope = document.querySelector('body > div[style*="--acc"]');
+    if (!scope) return;
+    scope.id = 'mk-scope';
+
+    var st = document.createElement('style');
+    st.id = 'mk-theme-style';
+    document.head.appendChild(st);
+    var fl = document.createElement('link');
+    fl.rel = 'stylesheet';
+
+    function read() {
+      try { return Object.assign({}, DEF, JSON.parse(localStorage.getItem(TKEY) || '{}')); }
+      catch (e) { return Object.assign({}, DEF); }
+    }
+    function save(t) { try { localStorage.setItem(TKEY, JSON.stringify(t)); } catch (e) {} }
+    function lum(hex) {
+      var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      if (!m) return 0;
+      var c = [1, 2, 3].map(function (i) {
+        var v = parseInt(m[i], 16) / 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * c[0] + 0.7152 * c[1] + 0.4072 * c[2];
+    }
+    function apply(t) {
+      var css = '';
+      if (t.text !== DEF.text) {
+        css += '#mk-scope :is(h1,h2,h3,h4,p,li,td,th,label,blockquote,strong,em,div,span,a,footer):not([style*="var(--acc"]):not([style*="color:#ffffff"]):not([style*="color:#fff"]) { color: ' + t.text + ' !important; }';
+      }
+      if (t.bg !== DEF.bg) {
+        css += '#mk-scope, #mk-scope > div, #mk-scope header, #mk-scope main, #mk-scope section, #mk-scope footer, #mk-scope [style*="background:#f8f2eb"], #mk-scope [style*="background:#ede5d9"], #mk-scope [style*="background:rgba(222,216,205"], #mk-scope [style*="background:rgba(247,243,235"] { background-color: ' + t.bg + ' !important; }';
+        css += '#mk-scope input, #mk-scope textarea { background-color: ' + t.bg + ' !important; }';
+        var hx = /^#[0-9a-f]{6}$/i.test(t.bg) ? t.bg : null;
+        if (hx) css += '#mk-scope [data-m~="heroscrim"] { background-image: linear-gradient(100deg, ' + hx + 'F7 0%, ' + hx + 'EB 34%, ' + hx + '73 66%, ' + hx + '1F 100%) !important; }';
+        else css += '#mk-scope [data-m~="heroscrim"] { background-image: none !important; background-color: ' + t.bg + ' !important; opacity: .9; }';
+      }
+      scope.style.setProperty('--acc', t.btn);
+      if (t.btn !== DEF.btn) {
+        css += '#mk-scope [style*="background:var(--acc"], #mk-scope button[type="submit"] { background-color: ' + t.btn + ' !important; color: ' + (lum(t.btn) > 0.55 ? '#241c18' : '#ffffff') + ' !important; }';
+        css += '#mk-scope [data-m~="hdrnav"] > a::after { background: ' + t.btn + ' !important; }';
+      }
+      if (t.font) {
+        if (t.fontUrl && fl.href !== t.fontUrl) { fl.href = t.fontUrl; if (!fl.parentNode) document.head.appendChild(fl); }
+        css += '#mk-scope :is(h1,h2,h3,h4,p,li,a,div,span,button,input,textarea,label,blockquote,select):not([style*="Plex Mono"]) { font-family: "' + t.font + '", Karla, sans-serif !important; }';
+      }
+      st.textContent = css;
+    }
+
+    var t = read();
+    apply(t);
+
+    var fmt = 'hex';
+    var active = 'text';
+    var elSel = document.getElementById('mk-f-sel');
+    var elOwn = document.getElementById('mk-f-own');
+    var committed = { text: t.text, bg: t.bg, btn: t.btn };
+    var draft = { text: t.text, bg: t.bg, btn: t.btn };
+    var sv = document.getElementById('mk-sv');
+    var svH = document.getElementById('mk-sv-h');
+    var hue = document.getElementById('mk-hue');
+    var hueH = document.getElementById('mk-hue-h');
+    var fields = document.getElementById('mk-fields');
+    var hsv = { h: 0, s: 0, v: 0 };
+
+    function toRgb(hex) {
+      var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [0, 0, 0];
+    }
+    function toHex(r, g, b) {
+      return '#' + [r, g, b].map(function (v) {
+        v = Math.max(0, Math.min(255, Math.round(v)));
+        return (v < 16 ? '0' : '') + v.toString(16);
+      }).join('');
+    }
+    function rgbToHsv(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn, h = 0;
+      if (d) {
+        if (mx === r) h = 60 * (((g - b) / d) % 6);
+        else if (mx === g) h = 60 * ((b - r) / d + 2);
+        else h = 60 * ((r - g) / d + 4);
+      }
+      if (h < 0) h += 360;
+      return { h: h, s: mx ? d / mx : 0, v: mx };
+    }
+    function hsvToHex(o) {
+      var c = o.v * o.s, x = c * (1 - Math.abs(((o.h / 60) % 2) - 1)), m = o.v - c;
+      var p = [[c, x, 0], [x, c, 0], [0, c, x], [0, x, c], [x, 0, c], [c, 0, x]][Math.floor(((o.h % 360) + 360) % 360 / 60)];
+      return toHex((p[0] + m) * 255, (p[1] + m) * 255, (p[2] + m) * 255);
+    }
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn, h = 0, s = 0, l = (mx + mn) / 2;
+      if (d) {
+        s = d / (1 - Math.abs(2 * l - 1));
+        if (mx === r) h = 60 * (((g - b) / d) % 6);
+        else if (mx === g) h = 60 * ((b - r) / d + 2);
+        else h = 60 * ((r - g) / d + 4);
+      }
+      if (h < 0) h += 360;
+      return [Math.round(h), Math.round(s * 100), Math.round(l * 100)];
+    }
+    function hslToHex(h, s, l) {
+      s /= 100; l /= 100;
+      var c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = l - c / 2;
+      var p = [[c, x, 0], [x, c, 0], [0, c, x], [0, x, c], [x, 0, c], [c, 0, x]][Math.floor(((h % 360) + 360) % 360 / 60)];
+      return toHex((p[0] + m) * 255, (p[1] + m) * 255, (p[2] + m) * 255);
+    }
+    function parse(str) {
+      str = String(str).trim().toLowerCase();
+      var m = /^#?([0-9a-f]{6})$/.exec(str);
+      if (m) return '#' + m[1];
+      m = /^#?([0-9a-f]{3})$/.exec(str);
+      if (m) return '#' + m[1].split('').map(function (c) { return c + c; }).join('');
+      m = /^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)/.exec(str);
+      if (m) return toHex(+m[1], +m[2], +m[3]);
+      m = /^hsla?\(\s*(-?[\d.]+)[,\s]+([\d.]+)%?[,\s]+([\d.]+)%?/.exec(str);
+      if (m) return hslToHex(+m[1], +m[2], +m[3]);
+      return null;
+    }
+    function dirty() { return draft.text !== committed.text || draft.bg !== committed.bg || draft.btn !== committed.btn; }
+    function live() { apply({ text: draft.text, bg: draft.bg, btn: draft.btn, font: t.font, fontUrl: t.fontUrl }); }
+
+    function fieldDefs() {
+      var c = toRgb(draft[active]);
+      if (fmt === 'rgb') return [{ k: 'r', l: 'R', v: c[0] }, { k: 'g', l: 'G', v: c[1] }, { k: 'b', l: 'B', v: c[2] }];
+      if (fmt === 'hsl') { var h = rgbToHsl(c[0], c[1], c[2]); return [{ k: 'h', l: 'H', v: h[0] }, { k: 's', l: 'S', v: h[1] }, { k: 'l', l: 'L', v: h[2] }]; }
+      return [{ k: 'hex', l: 'Hex', v: draft[active] }];
+    }
+    function renderFields() {
+      fields.innerHTML = '';
+      fieldDefs().forEach(function (d) {
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'flex:1; display:flex; flex-direction:column; gap:3px; align-items:center;';
+        var inp = document.createElement('input');
+        inp.type = 'text';
+        inp.value = d.v;
+        inp.spellcheck = false;
+        inp.dataset.k = d.k;
+        inp.style.cssText = 'width:100%; box-sizing:border-box; padding:5px 6px; border:1px solid #d5ccc1; background:#fff; font-family:inherit; font-size:11px; text-align:center; color:#241c18;';
+        var lab = document.createElement('span');
+        lab.textContent = d.l;
+        lab.style.cssText = 'font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#a1968c;';
+        inp.addEventListener('input', onField);
+        inp.addEventListener('blur', renderFields);
+        wrap.appendChild(inp); wrap.appendChild(lab);
+        fields.appendChild(wrap);
+      });
+    }
+    function onField() {
+      var vals = {};
+      Array.prototype.forEach.call(fields.querySelectorAll('input'), function (i) { vals[i.dataset.k] = i.value.trim(); });
+      var hex = null;
+      if (fmt === 'hex') hex = parse(vals.hex);
+      else if (fmt === 'rgb') hex = /^\d+$/.test(vals.r) && /^\d+$/.test(vals.g) && /^\d+$/.test(vals.b) ? toHex(+vals.r, +vals.g, +vals.b) : null;
+      else hex = /^-?[\d.]+$/.test(vals.h) && /^[\d.]+$/.test(vals.s) && /^[\d.]+$/.test(vals.l) ? hslToHex(+vals.h, +vals.s, +vals.l) : null;
+      var bad = !hex;
+      Array.prototype.forEach.call(fields.querySelectorAll('input'), function (i) { i.style.borderColor = bad ? '#d2a09b' : '#d5ccc1'; });
+      if (bad) return;
+      draft[active] = hex;
+      var c = toRgb(hex);
+      hsv = rgbToHsv(c[0], c[1], c[2]);
+      paint(true);
+    }
+    function paint(skipFields) {
+      sv.style.background = 'linear-gradient(to top, #000, rgba(0,0,0,0)), linear-gradient(to right, #fff, rgba(255,255,255,0)), hsl(' + Math.round(hsv.h) + ', 100%, 50%)';
+      svH.style.left = (hsv.s * 100) + '%';
+      svH.style.top = ((1 - hsv.v) * 100) + '%';
+      svH.style.background = draft[active];
+      hueH.style.left = (hsv.h / 360 * 100) + '%';
+      Array.prototype.forEach.call(document.querySelectorAll('.mk-ch'), function (b) {
+        var on = b.dataset.ch === active;
+        b.style.background = on ? '#241c18' : '#fff';
+        b.style.color = on ? '#fff' : '#5e534b';
+        b.style.borderColor = on ? '#241c18' : '#d5ccc1';
+        b.querySelector('.mk-dot').style.background = draft[b.dataset.ch];
+      });
+      var go = document.getElementById('mk-c-go');
+      go.style.background = dirty() ? '#b14e49' : '#241c18';
+      go.style.borderColor = dirty() ? '#b14e49' : '#241c18';
+      if (!skipFields) renderFields();
+      live();
+    }
+    function drag(el, fn) {
+      function move(e) {
+        var r = el.getBoundingClientRect();
+        fn(Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)));
+      }
+      el.addEventListener('pointerdown', function (e) {
+        el.setPointerCapture(e.pointerId);
+        move(e);
+        function mv(ev) { move(ev); }
+        function up() { el.removeEventListener('pointermove', mv); el.removeEventListener('pointerup', up); }
+        el.addEventListener('pointermove', mv);
+        el.addEventListener('pointerup', up);
+      });
+    }
+    drag(sv, function (x, y) { hsv.s = x; hsv.v = 1 - y; draft[active] = hsvToHex(hsv); paint(); });
+    drag(hue, function (x) { hsv.h = x * 360; draft[active] = hsvToHex(hsv); paint(); });
+
+    Array.prototype.forEach.call(document.querySelectorAll('.mk-ch'), function (b) {
+      b.addEventListener('click', function () {
+        active = b.dataset.ch;
+        var c = toRgb(draft[active]);
+        hsv = rgbToHsv(c[0], c[1], c[2]);
+        paint();
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.mk-fmt'), function (b) {
+      b.addEventListener('click', function () {
+        fmt = b.dataset.fmt;
+        Array.prototype.forEach.call(document.querySelectorAll('.mk-fmt'), function (o) {
+          var on = o === b;
+          o.style.background = on ? '#241c18' : '#fff';
+          o.style.color = on ? '#fff' : '#5e534b';
+          o.style.borderColor = on ? '#241c18' : '#d5ccc1';
+        });
+        renderFields();
+      });
+    });
+
+    document.getElementById('mk-c-go').addEventListener('click', function () {
+      t.text = draft.text; t.bg = draft.bg; t.btn = draft.btn;
+      committed = { text: t.text, bg: t.bg, btn: t.btn };
+      apply(t); save(t); paint();
+    });
+    document.getElementById('mk-c-undo').addEventListener('click', function () {
+      draft = { text: DEF.text, bg: DEF.bg, btn: DEF.btn };
+      committed = { text: DEF.text, bg: DEF.bg, btn: DEF.btn };
+      t.text = DEF.text; t.bg = DEF.bg; t.btn = DEF.btn;
+      var c = toRgb(draft[active]);
+      hsv = rgbToHsv(c[0], c[1], c[2]);
+      apply(t);
+      if (t.font) save(t); else { try { localStorage.removeItem(TKEY); } catch (e) {} }
+      paint();
+    });
+    function keep() {
+      if (dirty()) {
+        t.text = draft.text; t.bg = draft.bg; t.btn = draft.btn;
+        committed = { text: t.text, bg: t.bg, btn: t.btn };
+      }
+      if (t.text !== DEF.text || t.bg !== DEF.bg || t.btn !== DEF.btn || t.font) save(t);
+    }
+    window.addEventListener('pagehide', keep);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (a && a.id !== 'mk-exit' && !/^#/.test(a.getAttribute('href'))) keep();
+    }, true);
+    window.addEventListener('pageshow', function (e) { if (e.persisted) window.location.reload(); });
+
+    (function init() {
+      var c = toRgb(draft[active]);
+      hsv = rgbToHsv(c[0], c[1], c[2]);
+      paint();
+    })();
+    if (t.font && [].slice.call(elSel.options).some(function (o) { return o.value === t.font; })) elSel.value = t.font;
+    else if (t.font) elOwn.value = t.font;
+
+    function gUrl(name) {
+      return 'https://fonts.googleapis.com/css2?family=' + name.trim().replace(/\s+/g, '+') + ':wght@400;500;600;700;800&display=swap';
+    }
+    function setFont(name, url) {
+      t.font = name === 'Karla' ? '' : name;
+      t.fontUrl = t.font ? (url || gUrl(name)) : '';
+      apply(t); save(t);
+    }
+    elSel.addEventListener('change', function () { elOwn.value = ''; setFont(elSel.value, ''); });
+    document.getElementById('mk-f-go').addEventListener('click', function () {
+      var v = elOwn.value.trim();
+      if (!v) { setFont(elSel.value, ''); return; }
+      if (/^https?:\/\//i.test(v)) {
+        var m = /family=([^:&]+)/i.exec(v);
+        if (!m) { window.alert('U linku nema imena fonta (family=...). Nalepite ceo Google Fonts link.'); return; }
+        setFont(decodeURIComponent(m[1]).replace(/\+/g, ' '), v);
+      } else {
+        setFont(v, gUrl(v));
+      }
+    });
+
+    document.getElementById('mk-f-undo').addEventListener('click', function () {
+      elOwn.value = '';
+      elSel.value = 'Karla';
+      t.font = ''; t.fontUrl = '';
+      apply(t);
+      if (t.text !== DEF.text || t.bg !== DEF.bg || t.btn !== DEF.btn) save(t);
+      else { try { localStorage.removeItem(TKEY); } catch (e) {} }
+    });
+
+    document.getElementById('mk-th-reset').addEventListener('click', function () {
+      try { localStorage.removeItem(TKEY); } catch (e) {}
+      window.location.reload();
+    });
+
+    var body = document.getElementById('mk-panel-b');
+    var cue = document.getElementById('mk-panel-c');
+    document.getElementById('mk-panel-t').addEventListener('click', function () {
+      var open = body.style.display !== 'none';
+      body.style.display = open ? 'none' : 'flex';
+      cue.textContent = open ? '+' : '\u2013';
+    });
+  })();
+
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var EASE = 'cubic-bezier(.22,.61,.36,1)';
+    var pending = [];
+
+    function container(sec) {
+      var c = sec, i = 0;
+      while (i < 2 && c.children.length === 1 && c.firstElementChild.tagName === 'DIV') { c = c.firstElementChild; i++; }
+      return c;
+    }
+    function visible(el, ratio) {
+      var r = el.getBoundingClientRect();
+      var h = window.innerHeight || document.documentElement.clientHeight;
+      return r.top < h * (ratio || 0.92) && r.bottom > 0;
+    }
+    function add(el, run, ratio) { pending.push({ el: el, run: run, ratio: ratio, done: false }); }
+    function tick() {
+      var live = false;
+      for (var i = 0; i < pending.length; i++) {
+        var g = pending[i];
+        if (g.done) continue;
+        if (visible(g.el, g.ratio)) { g.done = true; g.run(); } else live = true;
+      }
+      return live;
+    }
+    function watch() {
+      var t0 = Date.now();
+      var iv = setInterval(function () {
+        if (!tick() || Date.now() - t0 > 45000) {
+          clearInterval(iv);
+          pending.forEach(function (g) { if (!g.done) { g.done = true; g.run(); } });
+        }
+      }, 150);
+      document.addEventListener('scroll', tick, true);
+      window.addEventListener('resize', tick);
+      tick();
+    }
+
+    function hide(el, dy) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(' + dy + 'px)';
+      el.style.transition = 'opacity .75s ' + EASE + ', transform .75s ' + EASE;
+    }
+    function show(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      setTimeout(function () { el.style.transform = ''; el.style.transition = ''; }, 900);
+    }
+    function group(list, step, dy) {
+      list.forEach(function (el) { hide(el, dy); });
+      return function () {
+        list.forEach(function (el, i) { setTimeout(function () { show(el); }, i * step); });
+      };
+    }
+
+    function words(h) {
+      var nodes = Array.prototype.slice.call(h.childNodes), out = [];
+      h.textContent = '';
+      nodes.forEach(function (n) {
+        if (n.nodeType === 3) {
+          n.textContent.split(/(\s+)/).forEach(function (w) {
+            if (!w) return;
+            if (/^\s+$/.test(w)) { h.appendChild(document.createTextNode(' ')); return; }
+            var sp = document.createElement('span');
+            sp.textContent = w;
+            sp.style.display = 'inline-block';
+            out.push(sp);
+            h.appendChild(sp);
+          });
+        } else { h.appendChild(n); }
+      });
+      return out;
+    }
+
+    function sections() {
+      var out = [];
+      Array.prototype.forEach.call(document.querySelectorAll('main > section'), function (s) {
+        if (s.getAttribute('data-m') && /herosec/.test(s.getAttribute('data-m'))) return;
+        if (s.querySelector('[data-m~="grid4"]')) return;
+        out.push(s);
+      });
+      return out;
+    }
+
+    function reveal() {
+      sections().forEach(function (sec) {
+        var kids = Array.prototype.slice.call(container(sec).children);
+        if (!kids.length) return;
+        var seq = [];
+        kids.forEach(function (kid) {
+          var cards = Array.prototype.slice.call(kid.querySelectorAll(':scope > [data-m~="svc"], :scope > [data-m~="proj"]'));
+          if (cards.length > 1) { seq.push({ list: cards, step: 110, dy: 24 }); return; }
+          if (kid.tagName === 'H2') { seq.push({ list: words(kid), step: 55, dy: 16 }); return; }
+          seq.push({ list: [kid], step: 0, dy: 28 });
+        });
+        var runs = seq.map(function (g) { return group(g.list, g.step, g.dy); });
+        add(sec, function () {
+          var d = 0;
+          runs.forEach(function (run, i) {
+            setTimeout(run, d);
+            d += seq[i].list.length > 1 ? 130 : 170;
+          });
+        });
+      });
+    }
+
+    function zooms() {
+      Array.prototype.forEach.call(document.querySelectorAll('[style*="aspect-ratio"]'), function (w) {
+        if (w.closest('[data-m~="herosec"]')) return;
+        var m = w.getAttribute('data-m') || '';
+        if (/csq/.test(m)) return;
+        if (!w.querySelector('image-slot, .mk-slot, [style*="dashed"]')) return;
+        var inner = w.firstElementChild;
+        if (!inner) return;
+        w.style.overflow = 'hidden';
+        inner.style.transform = 'scale(1.06)';
+        inner.style.transition = 'transform 1.2s ' + EASE;
+        add(w, function () {
+          inner.style.transform = 'scale(1)';
+          setTimeout(function () { inner.style.transition = ''; inner.style.transform = ''; }, 1300);
+        }, 0.96);
+      });
+    }
+
+    function parallax() {
+      var sec = document.querySelector('[data-m~="herosec"]');
+      if (!sec) return;
+      var bg = sec.firstElementChild;
+      if (!bg) return;
+      var AMT = 0.15;
+      bg.style.top = (-AMT * 100) + '%';
+      bg.style.bottom = 'auto';
+      bg.style.height = ((1 + AMT) * 100) + '%';
+      bg.style.willChange = 'transform';
+      var queued = false;
+      function frame() {
+        queued = false;
+        var r = sec.getBoundingClientRect();
+        var p = Math.min(1, Math.max(0, -r.top / (r.height || 1)));
+        bg.style.transform = 'translate3d(0,' + (p * AMT * r.height).toFixed(1) + 'px,0)';
+      }
+      function onScroll() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
+      document.addEventListener('scroll', onScroll, true);
+      window.addEventListener('resize', onScroll);
+      frame();
+    }
+
+    function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+    function counters() {
+      var wrap = document.querySelector('[data-m~="grid4"]');
+      if (!wrap) return;
+      var items = [];
+      Array.prototype.forEach.call(wrap.querySelectorAll('[data-m~="stat"]'), function (cell) {
+        var el = cell.firstElementChild;
+        if (!el) return;
+        var txt = el.textContent;
+        var digits = txt.replace(/[^0-9]/g, '');
+        if (!digits) return;
+        var line = document.createElement('div');
+        line.style.cssText = 'height:2px; width:0; margin:12px auto 0; background:var(--acc,#b14e49); transition:width 1.3s ' + EASE + ';';
+        cell.insertBefore(line, el.nextSibling);
+        items.push({ el: el, line: line, target: parseInt(digits, 10), suffix: txt.slice(txt.search(/[0-9]/)).replace(/[0-9.]/g, ''), done: txt });
+      });
+      if (!items.length) return;
+      if (reduce) { items.forEach(function (it) { it.line.style.width = '46px'; }); return; }
+      items.forEach(function (it) { it.el.textContent = '0' + it.suffix; });
+      add(wrap, function () {
+        items.forEach(function (it) { it.line.style.width = '46px'; });
+        var t0 = performance.now(), dur = 1300;
+        function step(now) {
+          var p = Math.min(1, Math.max(0, (now - t0) / dur));
+          var k = 1 - Math.pow(1 - p, 3);
+          items.forEach(function (it) { it.el.textContent = (p < 1 ? fmt(Math.round(it.target * k)) + it.suffix : it.done); });
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }, 0.6);
+    }
+
+    if (!reduce) { reveal(); zooms(); parallax(); }
+    counters();
+    if (pending.length) watch();
+  })();
+</script>
+
+</body>
+</html>
