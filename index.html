@@ -32,9 +32,13 @@
   #mk-map { background:#ede5d9; }
   #mk-map .leaflet-container { font-family:'Fira Mono',monospace; }
   #mk-map .leaflet-control-attribution { font-size:9px; }
+  #mk-map .leaflet-tile-pane { filter: grayscale(1) sepia(.18) contrast(.92) brightness(1.04); }
   .mk-pin { width:16px; height:16px; border-radius:50%; box-shadow:0 0 0 5px rgba(36,28,24,.10), 0 2px 10px rgba(0,0,0,.25); }
   .mk-label { background:#f8f2eb; color:#241c18; border:1px solid #d5ccc1; padding:7px 11px; font:500 12px/1.35 'Karla',sans-serif; white-space:nowrap; }
   .mk-label b { display:block; font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:3px; }
+  [data-m~="biocard"] > summary::-webkit-details-marker { display:none; }
+  [data-m~="biocard"][open] [data-m~="bioarrow"] { transform: rotate(180deg); }
+  [data-m~="bioarrow"]:hover { background:#e4ddd4; }
   @media (max-width: 1080px) {
     [data-m~="cwrap"] { grid-template-columns: 1fr !important; gap: 28px !important; }
   }
@@ -48,7 +52,7 @@
     [data-m~="grid2"] { grid-template-columns: 1fr !important; }
     [data-m~="grid4"] { grid-template-columns: 1fr 1fr !important; }
     [data-m~="grid4"] > [data-m~="stat"]:last-child { grid-column: 1 / -1; border-right: none !important; border-top: 1px solid #e4ddd4; }
-    [data-m~="bio"] { grid-template-columns: 1fr !important; }
+    [data-m~="teamgrid"] { grid-template-columns: 1fr !important; }
     [data-m~="bioimg"] { border-right: none !important; border-bottom: 1px solid #d5ccc1 !important; }
     [data-m~="h1"] { font-size: 34px !important; max-width: 12em !important; }
     [data-m~="h2"] { font-size: 22px !important; margin-bottom: 32px !important; }
@@ -79,7 +83,7 @@
     [data-m~="grid2"] { grid-template-columns: 1fr !important; }
     [data-m~="grid4"] { grid-template-columns: 1fr 1fr !important; }
     [data-m~="grid4"] > [data-m~="stat"]:last-child { grid-column: 1 / -1; border-right: none !important; border-top: 1px solid #e4ddd4; }
-    [data-m~="bio"] { grid-template-columns: 1fr !important; }
+    [data-m~="teamgrid"] { grid-template-columns: 1fr !important; }
     [data-m~="bioimg"] { border-right: none !important; border-bottom: 1px solid #d5ccc1 !important; }
     [data-m~="h1"] { font-size: 34px !important; max-width: 12em !important; }
     [data-m~="h2"] { font-size: 22px !important; margin-bottom: 32px !important; }
@@ -105,6 +109,12 @@
   }
   @media (max-width: 1080px) { [data-m~="prevlink"][data-m~="hide"] { display: none !important; } }
   @container pg (max-width: 1080px) { [data-m~="prevlink"][data-m~="hide"] { display: none !important; } }
+
+  @media (max-width: 360px) {
+    [data-m~="hdr"] { gap: 10px !important; padding-left: 14px !important; padding-right: 14px !important; }
+    #mk-burger { padding: 10px 12px !important; }
+    #mk-burger > span:last-child { display: none !important; }
+  }
 </style>
 <style>
   html { scroll-behavior: smooth; scroll-padding-top: 74px; }
@@ -240,14 +250,13 @@
 
   <main style="position:relative; z-index:1;">
 
-    <section data-m="herosec" style="position:relative; min-height:660px; display:flex; align-items:center; overflow:hidden; border-bottom:1px solid #d5ccc1;">
+    <section data-m="herosec" style="position:relative; min-height:680px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; border-bottom:1px solid #d5ccc1;">
       <div style="position:absolute; inset:0; z-index:0;"><img src="assets/hero.jpg" alt="Atelje biroa MARNIK" fetchpriority="high" style="display:block; width:100%; height:100%; object-fit:cover; object-position:center;"></div>
-      <div data-m="heroscrim" style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(100deg, rgba(248,242,235,.97) 0%, rgba(248,242,235,.92) 34%, rgba(248,242,235,.45) 66%, rgba(248,242,235,.12) 100%);"></div>
-      <div data-m="pad" style="position:relative; z-index:2; pointer-events:none; width:100%; max-width:1240px; margin:0 auto; padding:120px 40px;">
-        <div style="max-width:34em; pointer-events:auto;">
-          <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.08em; text-transform:uppercase; margin-bottom:26px; animation:mkUp .6s ease-out .1s both;">Projektni biro · Beograd</div>
+      <div data-m="pad" style="position:relative; z-index:2; pointer-events:none; width:100%; max-width:1240px; margin:0 auto; padding:56px 40px 240px;">
+        <div style="position:relative; isolation:isolate; max-width:40em; margin:0 auto; pointer-events:auto; display:flex; flex-direction:column; align-items:center;"><div aria-hidden="true" style="position:absolute; inset:-140px -280px; z-index:-1; pointer-events:none; background:radial-gradient(ellipse closest-side at 50% 50%, rgba(255,255,255,.8) 0%, rgba(255,255,255,.72) 25%, rgba(255,255,255,.52) 45%, rgba(255,255,255,.3) 62%, rgba(255,255,255,.13) 78%, rgba(255,255,255,.04) 90%, rgba(255,255,255,0) 100%);"></div>
+          <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.08em; text-transform:uppercase; margin-top:20px; margin-bottom:12px; animation:mkUp .6s ease-out .1s both;">Projektni biro · Beograd</div>
         <h1 data-m="h1" style="animation:mkUp .6s ease-out .25s both; font-family:'EB Garamond',serif; font-weight:500; font-size:68px; line-height:1.02; letter-spacing:-.015em; margin:0 0 26px; text-wrap:balance;">Arhitektura koja traje</h1>
-        <p style="font-size:20px; line-height:1.55; font-weight:500; color:#5e534b; max-width:30em; margin:0 0 36px; animation:mkUp .6s ease-out .4s both;">Projektni biro iz Beograda osnovan 1992. godine.<br>Idejna rešenja i kompletna tehnička dokumentacija za građevinsku i upotrebnu dozvolu za stambene, poslovne i javne objekte.</p>
+        <p style="font-size:20px; line-height:1.55; font-weight:500; color:#241C18; max-width:32em; margin:0 auto 36px; text-wrap:pretty; animation:mkUp .6s ease-out .4s both;">Projektni biro iz Beograda osnovan 1992. godine.<br>Idejna rešenja i kompletna tehnička dokumentacija za građevinsku i upotrebnu dozvolu za stambene, poslovne i javne objekte.</p>
         <a href="reference.html" style="cursor:pointer; display:inline-block; font-size:14px; font-weight:600; letter-spacing:.02em; color:#ffffff; background:var(--acc,#b14e49); padding:15px 28px; border-radius:2px; animation:mkUp .6s ease-out .55s both;">Pogledajte reference →</a>
         </div>
       </div>
@@ -360,34 +369,40 @@
     <section id="sec-team" data-m="pad" style="max-width:1240px; margin:0 auto; padding:56px 40px 96px; border-top:1px solid #e4ddd4;">
       <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px;">Tim</div>
       <h2 data-m="h2" style="font-family:'EB Garamond',serif; font-weight:500; font-size:44px; line-height:1.06; letter-spacing:-.015em; margin:0 0 48px;">Ljudi iza projekata</h2>
-      <div style="display:flex; flex-direction:column; gap:28px;">
-        <div style="background:#ede5d9; border:1px solid #d5ccc1; display:grid; grid-template-columns:380px 1fr; align-items:stretch;" data-m="bio">
-          <div style="display:flex; flex-direction:column; border-right:1px solid #d5ccc1;" data-m="bioimg">
-            <div style="aspect-ratio:1/1;"><img src="assets/tim-nada.jpg" alt="Nada Naletina, DIA" style="display:block; width:100%; height:100%; object-fit:cover; object-position:center 15%;"></div>
-            <div style="padding:26px 28px;">
-              <div style="font-family:'EB Garamond',serif; font-weight:500; font-size:22px; line-height:1.2; letter-spacing:-.005em;">Nada Naletina, DIA</div>
-              <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.04em; margin-top:8px;">Direktor i osnivač</div>
+      <div data-m="teamgrid" style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:28px; align-items:start;">
+        <details name="tim-bio" data-m="biocard" style="background:#ede5d9; border:1px solid #d5ccc1; align-self:start;">
+          <summary style="list-style:none; cursor:pointer; display:block;">
+            <div style="aspect-ratio:1/1; border-bottom:1px solid #d5ccc1;"><img src="assets/tim-nada.jpg" alt="Nada Naletina, DIA" style="display:block; width:100%; height:100%; object-fit:cover; object-position:center 15%;"></div>
+            <div style="padding:22px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+              <div>
+                <div style="font-family:'EB Garamond',serif; font-weight:500; font-size:22px; line-height:1.2; letter-spacing:-.005em;">Nada Naletina, DIA</div>
+                <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.04em; margin-top:8px;">Direktor i osnivač</div>
+              </div>
+              <span aria-label="Biografija" data-m="bioarrow" style="flex:none; width:44px; height:44px; border:1px solid #d5ccc1; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#241c18; transition:transform .25s ease;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l5 5 5-5"></path></svg></span>
             </div>
-          </div>
-          <div style="padding:38px 36px; display:flex; flex-direction:column; gap:18px;">
+          </summary>
+          <div style="padding:4px 24px 28px; display:flex; flex-direction:column; gap:14px; border-top:1px solid #d5ccc1; padding-top:22px;">
             <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.07em; text-transform:uppercase;">Biografija</div>
             <p style="margin:0; font-size:16px; line-height:1.7; color:#5e534b;">Osnovala je MARNIK 1992. godine i od tada vodi biro. Radi na koncepciji projekata, tehničkoj dokumentaciji i saradnji sa investitorima.</p>
             <p style="margin:0; font-size:16px; line-height:1.7; color:#5e534b;">Zameni ovaj tekst biografijom - obrazovanje, licence, značajni projekti i oblasti rada.</p>
           </div>
-        </div>
-        <div style="background:#ede5d9; border:1px solid #d5ccc1; display:grid; grid-template-columns:380px 1fr; align-items:stretch;" data-m="bio">
-          <div style="display:flex; flex-direction:column; border-right:1px solid #d5ccc1;" data-m="bioimg">
-            <div style="aspect-ratio:1/1;"><img src="assets/tim-nikola.jpg" alt="Nikola Naletina, DIA" style="display:block; width:100%; height:100%; object-fit:cover; object-position:center 15%;"></div>
-            <div style="padding:26px 28px;">
-              <div style="font-family:'EB Garamond',serif; font-weight:500; font-size:22px; line-height:1.2; letter-spacing:-.005em;">Nikola Naletina, DIA</div>
-              <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.04em; margin-top:8px;">Zamenik direktora</div>
+        </details>
+        <details name="tim-bio" data-m="biocard" style="background:#ede5d9; border:1px solid #d5ccc1; align-self:start;">
+          <summary style="list-style:none; cursor:pointer; display:block;">
+            <div style="aspect-ratio:1/1; border-bottom:1px solid #d5ccc1;"><img src="assets/tim-nikola.jpg" alt="Nikola Naletina, DIA" style="display:block; width:100%; height:100%; object-fit:cover; object-position:center 15%;"></div>
+            <div style="padding:22px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+              <div>
+                <div style="font-family:'EB Garamond',serif; font-weight:500; font-size:22px; line-height:1.2; letter-spacing:-.005em;">Nikola Naletina, DIA</div>
+                <div style="font-family:'Fira Mono',monospace; font-size:12px; color:var(--acc,#b14e49); letter-spacing:.04em; margin-top:8px;">Zamenik direktora</div>
+              </div>
+              <span aria-label="Biografija" data-m="bioarrow" style="flex:none; width:44px; height:44px; border:1px solid #d5ccc1; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#241c18; transition:transform .25s ease;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l5 5 5-5"></path></svg></span>
             </div>
-          </div>
-          <div style="padding:38px 36px; display:flex; flex-direction:column; gap:18px;">
+          </summary>
+          <div style="padding:4px 24px 28px; display:flex; flex-direction:column; gap:14px; border-top:1px solid #d5ccc1; padding-top:22px;">
             <div style="font-family:'Fira Mono',monospace; font-size:12px; color:#7e7269; letter-spacing:.07em; text-transform:uppercase;">Biografija</div>
             <p style="margin:0; font-size:16px; line-height:1.7; color:#5e534b;">Zameni ovaj tekst biografijom - obrazovanje, licence, značajni projekti i oblasti rada.</p>
           </div>
-        </div>
+        </details>
       </div>
     </section>
 
@@ -743,7 +758,7 @@
     if (!window.L) { setTimeout(initMap, 200); return; }
     var HQ = [44.813856, 20.4648149];
     var map = window.L.map(el, { center: HQ, zoom: 16, scrollWheelZoom: false });
-    window.L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 20, attribution: '© OpenStreetMap contributors © CARTO' }).addTo(map);
+    window.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: "© OpenStreetMap contributors" }).addTo(map);
     window.L.marker(HQ, { icon: window.L.divIcon({ className: '', html: '<div class="mk-pin"></div>', iconSize: [16, 16], iconAnchor: [8, 8] }) }).addTo(map);
     window.L.marker(HQ, { icon: window.L.divIcon({ className: '', html: '<div class="mk-label"><b>Marnik</b>Kondina 1a, Stari Grad</div>', iconSize: [0, 0], iconAnchor: [-14, 26] }) }).addTo(map);
     setTimeout(function () { map.invalidateSize(); }, 60);

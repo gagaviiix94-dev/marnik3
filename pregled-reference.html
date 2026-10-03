@@ -48,6 +48,12 @@
   [data-m~="burger"][data-open="true"] span[data-l="3"] { transform: translateY(-5.5px) rotate(-45deg); }
   @media (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
   @container pg (max-width: 760px) { [data-m~="hdrnav"] { display: none !important; } [data-m~="burger"] { display: flex !important; } }
+
+  @media (max-width: 360px) {
+    [data-m~="hdr"] { gap: 10px !important; padding-left: 14px !important; padding-right: 14px !important; }
+    #mk-burger { padding: 10px 12px !important; }
+    #mk-burger > span:last-child { display: none !important; }
+  }
 </style>
 <style>
   html { scroll-behavior: smooth; scroll-padding-top: 74px; }
